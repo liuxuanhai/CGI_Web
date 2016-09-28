@@ -1,0 +1,10 @@
+
+
+//微信二维码格式， 参数顺序要严格
+weixin://wxpay/bizpayurl?sign=82C57195B9D5D6C9CAA2DA8A13AA7005&appid=wxfd93b50f7122f71b&mch_id=1243944402&product_id=1&time_stamp=1432469494&nonce_str=f6808210402125e30663234f94c87a8c
+
+
+
+
+
+

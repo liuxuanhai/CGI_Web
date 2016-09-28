@@ -1,0 +1,1040 @@
+package hoosho.msg.z;
+
+enum MSG_SUB_CMD
+{
+		USER_LOGIN_REQ = 1;
+		USER_LOGIN_RES = 2;
+		GET_PHONE_VC_REQ = 3;
+		GET_PHONE_VC_RES = 4;
+		SET_PHONE_REQ = 5;
+		SET_PHONE_RES = 6;
+		UPDATE_USER_INFO_REQ = 7;
+		UPDATE_USER_INFO_RES = 8;
+		GET_USER_INFO_REQ = 9;
+		GET_USER_INFO_RES = 10;
+		GET_USER_CASH_REQ = 11;
+		GET_USER_CASH_RES = 12;
+		GET_USER_RECOMMONED_LIST_REQ = 13;
+		GET_USER_RECOMMONED_LIST_RES = 14;
+		TRUST_USER_REQ = 15;
+		TRUST_USER_RES = 16;
+		GET_MY_TRUST_LIST_REQ = 17;
+		GET_MY_TRUST_LIST_RES = 18;
+		GET_TRUST_ME_LIST_REQ = 19;
+		GET_TRUST_ME_LIST_RES = 20;
+		
+		GET_CASH_FLOW_REQ = 21;
+		GET_CASH_FLOW_RES = 22;
+		COMMIT_OUTCOME_REQ = 23;
+		COMMIT_OUTCOME_RES = 24;
+		GET_OUTCOME_LIST_REQ = 25;
+		GET_OUTCOME_LIST_RES = 26;
+		
+		USER_TRUST_SB_CHECK_REQ = 27;
+		USER_TRUST_SB_CHECK_RES = 28;
+
+		CREATE_ORDER_REQ = 31;
+		CREATE_ORDER_RES = 32;
+		FETCH_ORDER_REQ = 33;
+		FETCH_ORDER_RES = 34;
+		SEARCH_ORDER_REQ = 35;
+		SEARCH_ORDER_RES = 36;
+		GET_ORDER_DETAIL_REQ = 37;
+		GET_ORDER_DETAIL_RES = 38;
+		GET_USER_FETCH_ORDER_LIST_REQ = 39;
+		GET_USER_FETCH_ORDER_LIST_RES = 40;
+		GET_USER_CREATE_ORDER_LIST_REQ = 41;
+		GET_USER_CREATE_ORDER_LIST_RES = 42;
+		CANCEL_ORDER_REQ = 43;
+		CANCEL_ORDER_RES = 44;
+		FINISH_ORDER_REQ = 45;
+		FINISH_ORDER_RES = 46;
+		COMMENT_ORDER_REQ = 47;
+		COMMENT_ORDER_RES = 48;
+		REWARD_ORDER_REQ = 49;
+		REWARD_ORDER_RES = 50;
+		
+		GET_PA_JSAPI_SIGNATURE_REQ = 51;
+		GET_PA_JSAPI_SIGNATURE_RES = 52;
+
+		WX_PAY_CALLBACK_NTF = 53;
+		WX_PAY_CALLBACK_NTF_PLACE_HOLDER = 54;
+
+		GET_PA_ACCESS_TOKEN_REQ = 55;
+		GET_PA_ACCESS_TOKEN_RES = 56;
+
+		//feeds  [favor, comment]
+		CHECK_ORDER_FAVOR_REQ = 59;
+		CHECK_ORDER_FAVOR_RES = 60;
+		UPDATE_ORDER_FAVOR_REQ = 61;
+		UPDATE_ORDER_FAVOR_RES = 62;
+		GET_ORDER_FAVOR_LIST_REQ = 63;
+		GET_ORDER_FAVOR_LIST_RES = 64;
+		ADD_ORDER_FOLLOW_REQ = 65;
+		ADD_ORDER_FOLLOW_RES = 66;
+		GET_ORDER_COMMENT_LIST_REQ = 67;
+		GET_ORDER_COMMENT_LIST_RES = 68;
+		GET_ORDER_COMMENT_DETAIL_REQ = 69;
+		GET_ORDER_COMMENT_DETAIL_RES = 70;
+		DEL_ORDER_FOLLOW_REQ = 71;
+		DEL_ORDER_FOLLOW_RES = 72;
+
+		//
+		ORDER_FETCH_CANCEL_REQ = 73;
+		ORDER_FETCH_CANCEL_RES = 74;
+		ORDER_FETCH_ACCEPT_REQ = 75;
+		ORDER_FETCH_ACCEPT_RES = 76;
+
+		//MSG
+		ADD_NEW_MSG_REQ = 90;
+		ADD_NEW_MSG_RES = 91;		
+		GET_MSG_LIST_REQ = 92;
+		GET_MSG_LIST_RES = 93;
+		DEL_MSG_REQ = 94;
+		DEL_MSG_RES = 95;
+		GET_SESSION_LIST_REQ = 96;
+		GET_SESSION_LIST_RES = 97;
+		DEL_SESSION_REQ = 98;
+		DEL_SESSION_RES = 99;
+		GET_NEWMSG_STATUS_REQ = 100;
+		GET_NEWMSG_STATUS_RES = 101;
+		
+		//red point
+		GET_RED_POINT_REQ = 200;
+		GET_RED_POINT_RES = 201;
+		UPDATE_RED_POINT_REQ = 202;
+		UPDATE_RED_POINT_RES = 203;
+
+		//notice
+		ADD_NOTICE_REQ = 300;
+		ADD_NOTICE_RES = 301;
+		GET_NOTICE_REQ = 302;
+		GET_NOTICE_RES = 303;
+		
+		//activity
+		UPDATE_USER_ACTIVITY_INFO_REQ = 330;
+		UPDATE_USER_ACTIVITY_INFO_RES = 331;
+		GET_USER_ACTIVITY_INFO_REQ = 332;
+		GET_USER_ACTIVITY_INFO_RES = 333;
+
+		//ranking
+		GET_RANKING_LIST_REQ = 340;
+		GET_RANKING_LIST_RES = 341;
+
+		//lottery
+		GET_AVAILABLE_LOTTERY_TIME_REQ = 350;
+		GET_AVAILABLE_LOTTERY_TIME_RES = 351;
+		GET_LOTTERY_RECORD_LIST_REQ = 352;
+		GET_LOTTERY_RECORD_LIST_RES = 353;
+		DO_LOTTERY_REQ = 354;
+		DO_LOTTERY_RES = 355;		
+}
+
+enum ORDER_STATUSE_ENUM
+{
+		ORDER_STATUS_PENDING = 1;
+		ORDER_STATUS_FETCH = 2;
+		ORDER_STATUS_FINISH = 3;
+		ORDER_STATUS_CANCEL = 4;
+}
+
+enum RED_POINT_TYPE
+{
+		RED_POINT_TYPE_FAVORITE = 1;
+		RED_POINT_TYPE_COMMENT = 2;
+		RED_POINT_TYPE_MSG = 3;
+		RED_POINT_TYPE_TRUST = 4;
+}
+
+// body
+message MsgReq
+{
+		optional uint32 sub_cmd = 1;
+		optional string code = 2;
+
+		optional UserLoginReq user_login_req = 3;
+		optional GetPhoneVCReq get_phone_vc_req = 4;
+		optional SetPhoneReq set_phone_req = 5;
+		optional UpdateUserInfoReq update_user_info_req = 6;
+		optional GetUserInfoReq get_user_info_req = 7;
+		optional GetUserRecommendListReq get_user_recommend_list_req = 8;
+		optional TrustUserReq trust_user_req = 9;
+		optional GetMyTrustListReq get_my_trust_list_req = 10;
+		optional GetTrustMeListReq get_trust_me_list_req = 11;
+		optional GetUserCashReq get_user_cash_req = 12;
+		optional UserTrustSBCheckReq user_trust_sb_check_req = 13;
+		
+		optional GetCashFlowReq get_cash_flow_req = 21;
+		optional CommitOutcomeReq commit_outcome_req = 22;
+		optional GetOutcomeListReq get_outcome_list_req = 23;
+
+		optional CreateOrderReq create_order_req = 31;
+		optional FetchOrderReq fetch_order_req = 32;
+		optional SearchOrderReq seach_order_req = 33;
+		optional GetOrderDetailReq get_order_detail_req = 34;
+		optional GetUserFetchOrderListReq get_user_fetch_order_list_req = 35;
+		optional GetUserCreateOrderListReq get_user_create_order_list_req = 36;
+		optional CancelOrderReq cancel_order_req = 37;
+		optional FinishOrderReq finish_order_req = 38;
+		optional CommentOrderReq comment_order_req = 39;
+		optional RewardOrderReq reward_order_req = 40;
+		
+
+		optional GetPAJSAPISignReq get_pa_jsapi_sign_req = 41;
+
+		optional FetchCancelReq fetch_cancel_req = 42;
+		optional FetchAcceptReq fetch_accept_req = 43;
+
+		optional WXPayCallBackNtf wx_pay_callback_ntf = 53;
+		
+		optional GetPAAccessTokenReq get_pa_access_token_req = 54;
+
+		//feeds
+		optional CheckOrderFavorReq check_order_favor_req = 60;
+		optional UpdateOrderFavorReq update_order_favor_req = 61;
+		optional GetOrderFavorListReq get_order_favor_list_req = 62;
+		optional AddOrderFollowReq add_order_follow_req = 63;
+		optional GetOrderCommentListReq get_order_comment_list_req = 64;
+		optional GetOrderCommentDetailReq get_order_comment_detail_req = 65;
+		optional DelOrderFollowReq del_order_follow_req = 66;
+
+		//msg
+		optional AddNewMsgReq add_new_msg_req = 90;		
+		optional GetMsgListReq get_msg_list_req = 91;		
+ 		optional DelMsgReq del_msg_req = 92;		
+		optional GetSessionListReq get_session_list_req = 93;		
+		optional DelSessionReq del_session_req = 94;		
+		optional GetNewMsgStatusReq get_newmsg_status_req = 95;
+		
+		//red point
+		optional GetRedPointReq get_red_point_req = 100;		
+		optional UpdateRedPointReq update_red_point_req = 101;		
+
+		//notice
+		optional AddNoticeReq add_notice_req = 200;		
+		optional GetNoticeReq get_notice_req = 201;		
+
+		//activity
+		optional UpdateUserActivityInfoReq update_user_activity_info_req = 230;
+		optional GetUserActivityInfoReq get_user_activity_info_req = 231;
+
+		//ranking
+		optional GetRankingListReq get_ranking_list_req = 240;
+
+		//lottery
+		optional GetAvailableLotteryTimeReq get_available_lottery_time_req = 250;
+		optional GetLotteryRecordListReq get_lottery_record_list_req = 251;	
+		optional DoLotteryReq do_lottery_req = 252;
+}
+
+message MsgRes
+{
+		optional uint32 sub_cmd = 1;
+		repeated UserInfo user_info_list = 2;
+		repeated OrderInfo order_info_list = 3;
+
+		optional UserLoginRes user_login_res = 4;
+		optional GetPhoneVCRes get_phone_vc_res = 5;
+		optional SetPhoneRes set_phone_res = 6;
+		optional UpdateUserInfoRes update_user_info_res = 7;
+		optional GetUserInfoRes get_user_info_res = 8;
+		optional GetUserRecommendListRes get_user_recommend_list_res = 9;
+		optional TrustUserRes trust_user_res = 10;
+		optional GetMyTrustListRes get_my_trust_list_res = 11;
+		optional GetTrustMeListRes get_trust_me_list_res = 12;
+		optional GetUserCashRes get_user_cash_res = 13;
+		optional UserTrustSBCheckRes user_trust_sb_check_res = 14;
+
+		optional GetCashFlowRes get_cash_flow_res = 21;
+		optional CommitOutcomeRes commit_outcome_res = 22;
+		optional GetOutcomeListRes get_outcomet_res = 23;
+	
+		optional CreateOrderRes create_order_res = 31;
+		optional FetchOrderRes fetch_order_res = 32;
+		optional SearchOrderRes search_order_res = 33;
+		optional GetOrderDetailRes get_order_detail_res = 34;
+		optional GetUserFetchOrderListRes get_user_fetch_order_list_res = 35;
+		optional GetUserCreateOrderListRes get_user_create_order_list_res = 36;
+		optional CancelOrderRes cancel_order_res = 37;
+		optional FinishOrderRes finish_order_res = 38;
+		optional CommentOrderRes comment_order_res = 39;	
+		optional RewardOrderRes reward_order_res = 40;
+		
+		optional GetPAJSAPISignRes get_pa_jsapi_sign_res = 41;
+		optional FetchCancelRes fetch_cancel_res = 42;
+		optional FetchAcceptRes fetch_accept_res = 43;
+		optional GetPAAccessTokenRes get_pa_access_token_res = 44;
+
+		//feeds
+		optional CheckOrderFavorRes check_order_favor_res = 60;
+		optional UpdateOrderFavorRes update_order_favor_res = 61;
+		optional GetOrderFavorListRes get_order_favor_list_res = 62;
+		optional AddOrderFollowRes add_order_follow_res = 63;
+		optional GetOrderCommentListRes get_order_comment_list_res = 64;
+		optional GetOrderCommentDetailRes get_order_comment_detail_res = 65;
+		optional DelOrderFollowRes del_order_follow_res = 66;
+		
+		//msg
+		optional AddNewMsgRes add_new_msg_res = 90;		
+		optional GetMsgListRes get_msg_list_res = 91;		
+ 		optional DelMsgRes del_msg_res = 92;		
+		optional GetSessionListRes get_session_list_res = 93;		
+		optional DelSessionRes del_session_res = 94;		
+		optional GetNewMsgStatusRes get_newmsg_status_res = 95;
+		
+		//red point
+		optional GetRedPointRes get_red_point_res = 100;		
+		optional UpdateRedPointRes update_red_point_res = 101;		
+
+		//notice
+		optional AddNoticeRes add_notice_res = 200;		
+		optional GetNoticeRes get_notice_res = 201;		
+
+		//activity
+		optional UpdateUserActivityInfoRes update_user_activity_info_res = 230;
+		optional GetUserActivityInfoRes get_user_activity_info_res = 231;
+
+		//ranking
+		optional GetRankingListRes get_ranking_list_res = 240;
+		
+		//lottery
+		optional GetAvailableLotteryTimeRes get_available_lottery_time_res = 250;
+		optional GetLotteryRecordListRes get_lottery_record_list_res = 251;	
+		optional DoLotteryRes do_lottery_res = 252;
+}
+
+// req & res 
+message UserLoginReq
+{		
+}
+
+message UserLoginRes
+{
+}
+
+message GetPhoneVCReq
+{
+		optional string phone = 1;
+}
+
+message GetPhoneVCRes
+{		
+}
+
+message SetPhoneReq
+{
+		optional string phone = 1;
+		optional string vc = 2;
+}
+
+message SetPhoneRes
+{
+}
+
+message UpdateUserInfoReq
+{
+		optional string self_desc = 1;
+}
+
+message UpdateUserInfoRes
+{
+}
+
+message GetUserInfoReq
+{
+		repeated string openid_list = 1;
+}
+
+message GetUserInfoRes
+{		
+		repeated UserExtraInfo user_extra_info_list = 1;
+}
+
+message UpdateUserActivityInfoReq
+{
+		optional UserActivityInfo user_activity_info = 1;
+}
+
+message UpdateUserActivityInfoRes
+{
+}
+
+message GetUserActivityInfoReq
+{
+		optional string info_id = 1;
+		optional uint32 activity_type = 2;
+}
+
+message GetUserActivityInfoRes
+{		
+		optional UserActivityInfo user_activity_info = 1;
+}
+
+message GetUserCashReq
+{
+}
+
+message GetUserCashRes
+{
+		optional uint64 balance = 1;
+		optional uint64 pending = 2;
+}
+
+message GetUserRecommendListReq
+{
+		optional string offset_openid = 1;
+		optional uint32 limit = 2;
+}
+
+message GetUserRecommendListRes
+{		repeated UserExtraInfo user_extra_info_list = 1;
+		repeated UserTrustSBStatus user_trust_sb_status_list = 2;
+}
+
+message TrustUserReq
+{
+		optional string openid = 1;
+		optional uint32 opt = 2;
+}
+
+message TrustUserRes
+{
+}
+
+message UserTrustSBCheckReq
+{
+		repeated string openid_list = 1;
+}
+
+message UserTrustSBCheckRes
+{
+		repeated UserTrustSBStatus user_trust_sb_status_list = 1;
+}
+
+message GetMyTrustListReq
+{
+		optional string openid = 1;
+		optional string offset_openid = 2;
+		optional uint32 limit = 3;
+}
+
+message GetMyTrustListRes
+{
+		repeated UserExtraInfo user_extra_info_list = 1;
+}
+
+message GetTrustMeListReq
+{
+		optional string openid = 1;
+		optional string offset_openid = 2;
+		optional uint32 limit = 3;
+}
+
+message GetTrustMeListRes
+{
+		repeated UserExtraInfo user_extra_info_list = 1;
+		repeated UserTrustSBStatus user_trust_sb_status_list = 2;
+}
+
+
+message GetCashFlowReq
+{
+	optional uint64 begin_ts = 1;
+	optional uint32 limit = 2;
+}
+message GetCashFlowRes
+{
+	repeated CashFlowInfo cash_flow_info_list = 1;
+}
+
+message CommitOutcomeReq
+{
+		optional uint64 amount = 1;
+}
+
+message CommitOutcomeRes
+{
+		optional uint64 balance = 1;
+		optional uint64 pending = 2;
+}
+
+message GetOutcomeListReq
+{	
+		optional uint64 state = 1;
+		optional uint64 limit = 2;
+		optional uint64 begin_ts = 3;
+}
+
+message GetOutcomeListRes
+{
+		repeated OutcomeReqInfo outcome_req_info_list = 1;
+}
+
+message CreateOrderReq
+{
+		optional OrderInfo order_info = 1;
+		optional string user_ip = 2;
+		optional string media_server_id = 3;
+}
+
+message CreateOrderRes
+{
+		optional uint64 orderid = 1;
+		optional uint32 cost_type = 2; //1： 平台账户扣钱，2：需要微信支付
+		optional WXUnifiedOrderParam wx_unified_order_param = 3; //cost_type=2时， 返回前端呼起微信支付需要的参数
+		optional uint64 reward_fee = 4;	//新用户首次下单，平台预打赏的金额
+}
+
+message FetchOrderReq
+{
+		optional uint64 orderid = 1;
+		optional string extra_data = 2;
+}
+
+message FetchOrderRes
+{
+}
+
+message FetchCancelReq
+{
+		optional uint64 orderid = 1; 
+}
+message FetchCancelRes
+{
+}
+
+message FetchAcceptReq
+{
+		optional uint64 orderid = 1;
+		optional string slave_openid = 2;
+}
+message FetchAcceptRes
+{
+}
+
+
+message SearchOrderReq
+{
+		optional uint64 addr_longitude = 1;
+		optional uint64 addr_latitude = 2;
+}
+
+message SearchOrderRes
+{
+		repeated UserExtraInfo user_extra_info_list = 1;
+}
+
+message GetOrderDetailReq
+{
+		repeated uint64 orderid_list = 1;
+}
+
+message GetOrderDetailRes
+{
+		repeated UserExtraInfo user_extra_info_list = 1;
+}
+
+message GetUserFetchOrderListReq
+{
+		optional string openid = 1;
+		optional uint64 begin_orderid = 2;
+		optional uint32 limit = 3;
+}
+
+message GetUserFetchOrderListRes
+{
+		repeated UserExtraInfo user_extra_info_list = 1;
+		repeated OrderOpenidFetchState order_openid_fetch_state_list = 2;
+}
+
+message GetUserCreateOrderListReq
+{
+		optional string openid = 1;
+		optional uint64 begin_orderid = 2;
+		optional uint32 limit = 3;
+}
+
+message GetUserCreateOrderListRes
+{
+		repeated UserExtraInfo user_extra_info_list = 1; 
+}
+
+message CancelOrderReq
+{
+		optional uint64 orderid = 1;
+}
+
+message CancelOrderRes
+{
+}
+
+message FinishOrderReq
+{
+		optional uint64 orderid = 1;
+}
+
+message FinishOrderRes
+{
+}
+
+message CommentOrderReq
+{
+		optional uint64 orderid = 1;
+		optional uint32 star = 2;
+}
+
+message CommentOrderRes
+{
+}
+
+message RewardOrderReq
+{
+		optional uint64 orderid = 1;
+		optional uint64 amount = 2;
+		optional string user_ip = 3;
+}
+
+message RewardOrderRes
+{
+		optional uint32 cost_type = 1; //1： 平台账户扣钱，2：需要微信支付
+		optional WXUnifiedOrderParam wx_unified_order_param = 2; //cost_type=2时， 返回前端呼起微信支付需要的参数
+}
+
+//获取公众号JSAPI签名
+message GetPAJSAPISignReq
+{
+	optional string pa_appid = 1;
+	optional string req_url = 2;
+}
+message GetPAJSAPISignRes
+{
+	optional string pa_appid = 1;
+	optional string req_url = 2;
+	optional string sign = 3;
+	optional string nonce = 4;
+	optional uint64 timestamp = 5;
+}
+
+//微信支付callback
+message WXPayCallBackNtf
+{
+	optional string xml = 1;
+}
+//获取公众号access token
+message GetPAAccessTokenReq
+{
+	optional string pa_appid = 1;
+}
+
+message GetPAAccessTokenRes
+{
+	optional string pa_access_token = 1;
+}
+
+
+message CheckOrderFavorReq
+{
+		repeated uint64 orderid_list = 1;
+}
+
+message CheckOrderFavorRes
+{
+		repeated OrderFavorInfo favor_list = 1;
+}
+
+message UpdateOrderFavorReq
+{
+		optional uint64 orderid = 1;
+		optional uint32 oper = 2; //1-点赞，2-取消
+}
+
+message UpdateOrderFavorRes
+{
+}
+
+message GetOrderFavorListReq
+{
+		optional uint64 orderid = 1;
+		optional uint64 begin_ts = 2;
+		optional uint64 limit = 3;
+}
+
+message GetOrderFavorListRes
+{
+		repeated OrderFavorInfo favor_list = 1;
+}
+
+message AddOrderFollowReq
+{
+		optional OrderFollowInfo follow_info = 1;
+}
+
+message AddOrderFollowRes
+{
+		optional uint64 follow_id = 1;
+}
+
+message GetOrderCommentListReq
+{
+		optional uint64 orderid = 1;
+		optional uint64 begin_comment_id = 2;
+		optional uint64 limit = 3;
+}
+
+message GetOrderCommentListRes
+{
+		repeated OrderCommentInfo comment_list = 1;
+}
+
+message GetOrderCommentDetailReq
+{
+		repeated uint64 origin_comment_id_list = 1;
+}
+
+message GetOrderCommentDetailRes
+{
+		repeated OrderCommentInfo comment_list = 1;
+}
+
+message DelOrderFollowReq
+{
+		optional uint64 follow_id =1;
+}
+
+message DelOrderFollowRes
+{
+}
+
+//msg
+message AddNewMsgReq
+{
+		optional MsgContent msg_content = 1;
+}
+
+message AddNewMsgRes
+{
+		optional uint64 msg_id = 1;
+		optional uint64 create_ts = 2;
+}
+
+message GetMsgListReq
+{
+		optional uint64 begin_msg_id = 1;
+		optional uint32 len = 2;
+		optional string openid_to = 3;
+}
+
+message GetMsgListRes
+{
+		repeated MsgContent msg_content_list = 1;
+}
+
+message DelMsgReq
+{
+		optional uint64 msg_id = 1;
+		optional string openid_to = 2;
+}
+
+message DelMsgRes
+{
+}
+
+message GetSessionListReq
+{
+		optional uint64 begin_ts = 1;
+		optional uint32 len = 2;
+}
+
+message GetSessionListRes
+{
+		repeated Session session_list = 1;
+		repeated UserExtraInfo user_extra_info_list = 2;
+}
+
+message DelSessionReq
+{
+		optional string openid_to = 1;
+}
+
+message DelSessionRes
+{
+}
+
+message GetNewMsgStatusReq
+{
+}
+
+message GetNewMsgStatusRes
+{
+		optional uint32 newmsg_status = 1;
+}
+
+message GetRedPointReq
+{
+}
+
+message GetRedPointRes
+{
+		repeated RedPointInfo red_point_info_list = 1;
+}
+
+message UpdateRedPointReq
+{
+		optional uint32 type = 1;
+		optional uint32 opt = 2;
+}
+
+message UpdateRedPointRes
+{
+}
+
+message AddNoticeReq
+{
+		optional NoticeInfo notice_info = 1;
+}
+
+message AddNoticeRes
+{
+}
+
+message GetNoticeReq
+{
+		optional uint32 type = 1;
+		optional uint64 begin_ts = 2;
+		optional uint32 len = 3;
+}
+
+message GetNoticeRes
+{
+		repeated NoticeInfo notice_info_list = 1;
+		repeated OrderFollowInfo order_follow_info_list = 2; 
+		repeated OrderInfo order_info_list = 3;
+		repeated UserExtraInfo user_extra_info_list = 4;
+}
+
+message GetRankingListReq
+{
+		optional uint32 type = 1;
+		optional uint32 limit = 2;
+		optional uint32 page = 3;
+}
+
+message GetRankingListRes
+{
+		
+}
+
+message GetAvailableLotteryTimeReq
+{
+
+}
+
+message GetAvailableLotteryTimeRes
+{
+		optional uint32 times = 1;
+}
+
+message GetLotteryRecordListReq
+{
+		optional uint32 len = 1;
+		optional uint64 begin_ts = 2;
+}
+
+message GetLotteryRecordListRes
+{
+		repeated LotteryInfo lottery_info_list = 1;
+}
+
+message DoLotteryReq
+{
+}
+
+message DoLotteryRes
+{
+		optional uint32 prize = 1;
+		optional string prize_desc = 2;
+}
+
+// struct
+message UserInfo
+{
+		optional string openid = 1;
+		optional string nickname = 2;
+		optional uint32 sex = 3;
+		optional string headimgurl = 4;
+		optional string self_desc = 5;
+		optional string phone = 6;
+		optional uint32 user_type = 7;
+		optional uint64 user_flag = 8;
+		optional uint32 user_score = 9;
+}
+
+message OrderWaitingUser
+{
+		optional string openid = 1;
+		optional uint64 create_ts = 2;
+}
+
+message OrderInfo
+{
+		optional uint64 order_id = 1;
+		optional string openid_master = 2;
+		optional string openid_slave = 3;
+		optional uint32 order_visible = 4;
+		optional uint32 order_status = 5;
+		optional uint32 pay_status = 6;
+		optional uint64 addr_to_longitude = 7;
+		optional uint64 addr_to_latitude = 8;
+		optional string addr_to = 9; 
+		optional string addr_to_detail = 10;
+		optional string order_desc = 11;
+		optional string order_receiver_name = 12;
+		optional string order_receiver_phone = 13;
+		optional uint64 price = 14;
+		optional uint64 expect_from_ts = 15;
+		optional uint64 expect_to_ts = 16;
+		optional uint64 pay_ts = 17;
+		optional uint64 create_ts = 18;
+		optional uint64 finish_ts = 19;
+		optional uint64 fetch_ts = 20;
+		optional uint64 cancel_ts = 21;
+		optional uint32 star_from_master = 22;
+		optional uint32 star_from_slave = 23;
+		optional uint32 order_type = 24;
+		optional uint32 media_type = 25;
+		optional string extra_data = 26;
+		repeated OrderWaitingUser order_waiting_user_list = 27;
+}
+
+message OrderOpenidFetchState
+{
+		optional uint64 order_id = 1;
+		optional string fetch_openid = 2;
+		optional uint32 fetch_state = 3;
+		optional uint64 fetch_ts = 4;
+		optional uint64 accept_ts = 5;
+}
+
+message CashFlowInfo
+{
+		optional uint64 table_id = 1;
+		optional string openid = 2;
+		optional string out_trade_no = 3;
+		optional uint64 amount = 4;
+		optional uint32 add_or_reduce = 5;
+		optional uint32 type = 6;
+		optional uint64 balance = 7;
+		optional uint64 create_ts = 8;
+}
+
+message OutcomeReqInfo
+{
+		optional uint64 table_id = 1;
+		optional string openid = 2;
+		optional uint64 amount = 3;
+		optional uint64 state = 4;
+		optional uint64 create_ts = 5;
+}
+
+message WXUnifiedOrderParam
+{
+		optional string appid = 1;
+		optional string timestamp = 2;
+		optional string nonceStr = 3;
+		optional string package = 4;
+		optional string signType = 5;
+		optional string paySign = 6;
+}
+
+message UserExtraInfo
+{
+		optional string openid = 1;
+		optional float  star = 2;
+		optional uint32 level = 3;
+}
+
+message UserTrustSBStatus
+{
+		optional string openid = 1;
+		optional uint32 status = 2;		//0:未信任 1:已信任
+}
+
+message UserActivityInfo
+{
+		optional string openid = 1;
+		optional string info_id = 2;
+		optional uint32 activity_type = 3;
+		optional string activity_info = 4;
+}
+
+message OrderFavorInfo
+{
+		optional uint64 orderid = 1;
+		optional string openid = 2;
+		optional uint64 create_ts = 3;
+}
+
+message OrderFollowInfo
+{
+		optional uint64 follow_id = 1;
+		optional string content = 2;
+		optional uint64 orderid = 3;
+		optional uint32 type = 4;
+		optional uint64 origin_comment_id = 5;
+		optional string openid_from = 6;
+		optional string openid_to = 7;
+		optional uint64 create_ts = 8;
+		optional uint64 del_ts = 9;
+}
+
+message OrderCommentInfo
+{
+		optional OrderFollowInfo comment = 1;
+		repeated OrderFollowInfo reply_list = 2;
+}
+
+message MsgContent
+{
+		optional uint64 msg_id = 1;
+		optional string content = 2;
+		optional string openid_from = 3;
+		optional string openid_to = 4;
+		optional uint64 create_ts = 5; 
+}
+
+message Session
+{
+		optional uint64 session_id = 1;
+		optional string openid_from = 2;
+		optional string openid_to = 3;
+		optional string content = 4;
+		optional uint32 newmsg_status = 5;
+		optional uint32 del_status = 6;
+		optional uint64 create_ts = 7;
+}
+
+message RedPointInfo
+{
+		optional uint32 type = 1;
+		optional uint32 value = 2;		
+}
+
+message NoticeInfo
+{
+		optional uint64 table_id = 1;
+		optional string openid = 2;
+		optional uint32 type = 3;
+		optional uint32 status = 4;
+		optional string extra_data_0 = 5;
+		optional string extra_data_1 = 6;
+		optional string extra_data_2 = 7;
+		optional uint64 create_ts = 8;
+}
+
+message LotteryInfo
+{
+		optional uint32 prize = 1;
+		optional string prize_desc = 2;
+		optional uint64 create_ts = 3;
+}
+

@@ -1,0 +1,95 @@
+package hoosho.j.commstruct;
+
+message FeedInfo
+{
+		optional uint64 feed_id = 1;
+		optional string openid = 2;
+		optional string content = 3;
+		optional uint64 ts = 4;
+		optional uint64 num_follow = 5;
+		optional uint64 num_listen = 6;
+		optional uint64 need_sex = 7;
+}
+
+message FollowInfo
+{
+		optional uint64 follow_id = 1;
+		optional uint64 feed_id = 2;
+		optional string openid = 3;
+		optional uint64 content_type = 4;
+		optional string content_id = 5;
+		optional uint64 content_duration = 6;
+		optional uint64 ts = 7;
+		optional uint64 num_listen = 8;
+		optional uint64 num_comment_good = 9;
+		optional uint64 num_comment_default = 10;
+		optional uint64 num_comment_bad = 11;
+		optional string out_trade_no = 12;
+}
+
+message ListenInfo
+{
+		optional uint64 listen_id = 1;
+		optional string openid = 2;
+		optional uint64 follow_id = 3;
+		optional uint64 feed_id = 4;
+		optional uint64 ts = 5;
+		optional uint64 comment_type = 6;
+		optional string out_trade_no = 7;
+}
+
+message HistoryInfo
+{
+		optional string openid = 1;
+		optional uint64 feed_id = 2;
+		optional uint64 ts = 3;
+}
+
+message CheckListenInfo
+{
+		optional string openid = 1;
+		optional uint64 follow_id = 2;
+		optional uint64 listen = 3;
+}
+
+message CommentFollowInfo
+{
+		optional string openid = 1;
+		optional uint64 follow_id = 2;
+		optional uint64 comment_type = 3;
+}
+
+message UserInfo
+{
+		optional string openid = 1;
+		optional uint32 subscribe = 2;
+		optional uint64 subscribe_time = 3;
+		optional string nickname = 4;
+		optional uint32 sex = 5;
+		optional string country = 6;
+		optional string province = 7;
+		optional string city = 8;
+		optional string headimgurl = 9;
+		optional string self_desc = 10;	
+}
+
+message CashFlowInfo
+{
+		optional string openid = 1;
+		optional string out_trade_no = 2;
+		optional string out_trade_openid = 3;
+		optional uint64 amount = 4;
+		optional uint32 type = 5;
+		optional uint32 reason = 6;
+		optional uint64 balance = 7;
+		optional uint64 create_ts = 8;
+}
+
+message OutcomeReqInfo
+{
+		optional uint64 table_id = 1;
+		optional string openid = 2;
+		optional uint64 amount = 3;
+		optional uint64 state = 4;
+		optional uint64 create_ts = 5;
+}

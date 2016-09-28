@@ -1,0 +1,155 @@
+import "j_comm_struct.proto";
+
+package hoosho.j.pay;
+
+message UnifiedOrderReq
+{
+	optional string openid = 1;
+	optional uint32 type = 2;
+	optional uint64 business_id = 3;
+	optional string client_ip = 4;
+}
+message UnifiedOrderRes
+{
+	optional string appid = 1;
+	optional string timestamp = 2;
+	optional string nonce_str = 3;
+	optional string package = 4;
+	optional string sign_type = 5;
+	optional string pay_sign = 6;
+	optional string out_trade_no = 7;
+}
+
+message TransferReq
+{
+	optional string openid = 1;
+	optional uint64 amount = 2;
+	optional string client_ip = 3;
+}
+message TransferRes
+{
+	optional uint64 total_income = 1;
+	optional uint64 total_outcome = 2;
+	optional uint64 total_outcome_pending = 3;
+}
+
+message GetUserCashReq
+{
+	optional string openid = 1;
+}
+message GetUserCashRes
+{
+	optional uint64 total_income = 1;
+	optional uint64 total_outcome = 2;
+	optional uint64 total_outcome_pending = 3;
+}
+
+message QueryCashFlowReq
+{
+	optional string openid = 1;
+	optional uint64 begin_ts = 2;
+	optional uint32 limit = 3;
+}
+message QueryCashFlowRes
+{
+	repeated hoosho.j.commstruct.CashFlowInfo cash_flow_info_list = 1;
+}
+
+message UnifiedOrderCallbackReq
+{
+	optional string callback_xml = 1;
+	optional string client_ip = 2;
+}
+message UnifiedOrderCallbackRes
+{
+	optional string return_code = 1;
+	optional string return_msg = 2;
+}
+
+message UnifiedOrderQueryReq
+{
+	optional string openid = 1;
+	repeated string out_trade_no_list = 2;
+}
+message UnifiedOrderQueryRes
+{
+	repeated string out_trade_no_list = 1;
+}
+
+message ListenIncomeReq
+{
+	optional string openid = 1;				//偷听收益者openid
+	optional string out_trade_no = 2;		//偷听的支付订单号	
+	optional uint32 share_type = 3;			//分成模式(4:默认一般 1:满意 2:不满意 参考COMMENT_TYPE_ENUM)
+	optional uint32 record_type = 4;		//记录类型(1:新增记录 2:更新已有记录)
+	optional string out_trade_openid = 5;	//支付订单的openid
+}
+message ListenIncomeRes
+{
+}
+
+message SendRedPackReq
+{
+	optional string openid = 1;
+	optional uint64 amount = 2;
+	optional string client_ip = 3;
+	optional uint64 table_id = 4;
+}
+message SendRedPackRes
+{
+	optional uint64 total_income = 1;
+	optional uint64 total_outcome = 2;
+	optional uint64 total_outcome_pending = 3;
+}
+
+message CommitOutcomeReq
+{
+	optional string openid = 1;
+	optional uint64 amount = 2;
+}
+message CommitOutcomeRes
+{
+	optional uint64 total_income = 1;
+	optional uint64 total_outcome = 2;
+	optional uint64 total_outcome_pending = 3;
+}
+
+
+/*以下管理端发钱使用*/
+message QueryOutcomeReq
+{	
+	optional string openid = 1;
+	optional uint64 state = 2;
+	optional uint64 limit = 3;
+	optional uint64 begin_ts = 4;
+}
+message QueryOutcomeRes
+{
+	repeated hoosho.j.commstruct.OutcomeReqInfo outcome_req_info_list = 1;
+}
+
+message CheckOutcomeReq
+{
+	optional uint64 table_id = 1;
+	optional string openid = 2;
+	optional uint64 amount = 3;
+}
+
+message CheckOutcomeRes
+{
+}
+
+message UpdateOutcomeReq
+{
+	optional uint64 table_id = 1;
+	optional uint64 state = 2;
+	optional string openid = 3;
+	optional uint64 amount = 4;
+	optional string out_trade_no = 5;
+}
+
+message UpdateOutcomeRes
+{
+}
+
+

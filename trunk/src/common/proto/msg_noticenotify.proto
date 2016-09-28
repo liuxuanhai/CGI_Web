@@ -1,0 +1,91 @@
+import "comm_struct.proto";
+
+package hoosho.noticenotify;
+
+
+message TypeStatus
+{
+	optional uint32 type = 1;
+	optional uint32 status = 2;
+}
+
+message QueryNoticeNotifyReq
+{
+	optional uint64 pa_appid_md5 = 1;
+	optional uint64 openid_md5 = 2;
+}
+message QueryNoticeNotifyRes
+{
+	optional uint32 status=1;
+}
+message QueryNoticeNotifyTypeListReq
+{
+	optional uint64 pa_appid_md5 = 1;
+	optional uint64 openid_md5 = 2;
+	optional uint32 type = 3;
+}
+message QueryNoticeNotifyTypeListRes
+{
+	repeated TypeStatus type_status_list =1;
+}
+
+message QueryNoticeRecordReq
+{
+	optional uint64 pa_appid_md5 = 1;
+	optional uint64 openid_md5 = 2;
+	optional uint32 type = 3;
+	optional uint64 limit_ts = 4;
+	optional uint32 pagesize = 5;
+}
+message QueryNoticeRecordRes
+{
+	 repeated hoosho.commstruct.NoticeRecord notice_record_list =1;
+}
+
+
+
+message UpdateNoticeRecordReq
+{
+	optional hoosho.commstruct.NoticeRecord notice_record =1;
+}
+
+message UpdateNoticeRecordRes
+{
+}
+message AddNoticeRecordReq
+{
+	optional hoosho.commstruct.NoticeRecord notice_record =1;
+}
+
+message AddNoticeRecordRes
+{
+}
+message ReadNoticeRecordReq
+{
+	optional hoosho.commstruct.NoticeRecord notice_record =1;
+}
+
+message ReadNoticeRecordRes
+{
+}
+
+
+message DeleteNoticeRecordReq
+{
+	optional uint64 pa_appid_md5 = 1;
+	optional uint64 openid_md5 = 2;
+	optional uint64 create_ts = 3;
+	optional uint32 type=4;
+}
+
+message DeleteNoticeRecordRes
+{
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,66 @@
+import "j_comm_struct.proto";
+
+package hoosho.j.user;
+
+message UserLoginReq
+{
+	optional string pre_auth_code = 1;
+}
+message UserLoginRes
+{
+	optional hoosho.j.commstruct.UserInfo userinfo = 1;
+	optional string cookie_key = 2;
+	optional string cookie_value = 3;
+	optional uint64 cookie_life = 4;
+
+}
+
+
+//获取公众号JSAPI签名
+message GetPAJSAPISignReq
+{
+	optional string pa_appid = 1;
+	optional string req_url = 2;
+}
+message GetPAJSAPISignRes
+{
+	optional string pa_appid = 1;
+	optional string req_url = 2;
+	optional string sign = 3;
+	optional string nonce = 4;
+	optional uint64 timestamp = 5;
+}
+
+
+
+message CheckLoginReq
+{
+	optional string cookie_j_key = 1;
+	optional string cookie_j_value = 2;
+}
+message CheckLoginRes
+{
+}
+
+message GetUserInfoReq
+{
+	repeated string openid_list = 1;
+}
+message GetUserInfoRes
+{
+	repeated hoosho.j.commstruct.UserInfo userinfo_list = 1;
+}
+
+message UpdateUserInfoReq
+{
+	optional string openid = 1;
+	optional string self_desc = 2;
+}
+message UpdateUserInfoRes
+{
+}
+
+
+
+
+

@@ -1,0 +1,696 @@
+package hoosho.msg.s;
+
+enum MSG_SUB_CMD
+{
+	USER_LOGIN_REQ = 1;
+	USER_LOGIN_RES = 2;
+	GET_PHONE_VC_REQ = 3;
+	GET_PHONE_VC_RES = 4;
+	SET_PHONE_REQ = 5;
+	SET_PHONE_RES = 6;
+	UPDATE_USER_INFO_REQ = 7;
+	UPDATE_USER_INFO_RES = 8;
+	GET_USER_INFO_REQ = 9;
+	GET_USER_INFO_RES = 10;
+	UPDATE_USER_IDENTITY_INFO_REQ = 11;
+	UPDATE_USER_IDENTITY_INFO_RES = 12;
+	GET_USER_IDENTITY_INFO_REQ = 13;
+	GET_USER_IDENTITY_INFO_RES = 14;
+	ADD_USER_RECV_ADDR_INFO_REQ = 15;
+	ADD_USER_RECV_ADDR_INFO_RES = 16;
+	DEL_USER_RECV_ADDR_INFO_REQ = 17;
+	DEL_USER_RECV_ADDR_INFO_RES = 18;
+	UPDATE_USER_RECV_ADDR_INFO_REQ = 19;
+	UPDATE_USER_RECV_ADDR_INFO_RES = 20;
+	GET_USER_RECV_ADDR_INFO_REQ = 21;
+	GET_USER_RECV_ADDR_INFO_RES = 22;
+
+	GET_PA_JSAPI_SIGNATURE_REQ = 31;
+	GET_PA_JSAPI_SIGNATURE_RES = 32;
+	GET_TYPE_INFO_REQ = 33;
+	GET_TYPE_INFO_RES = 34;
+	GET_GOOD_INFO_REQ = 35;
+	GET_GOOD_INFO_RES = 36;
+	GET_PA_ACCESS_TOKEN_REQ = 37;
+	GET_PA_ACCESS_TOKEN_RES = 38;
+
+	ADD_TICKET_REQ = 41;
+	ADD_TICKET_RES = 42;
+	GET_USER_FEED_LIST_REQ = 43;
+	GET_USER_FEED_LIST_RES = 44;
+	GET_FEED_LIST_REQ = 45;
+	GET_FEED_LIST_RES = 46;
+	GET_USER_SHOW_LIST_REQ = 47;
+	GET_USER_SHOW_LIST_RES = 48;
+	GET_SHOW_LIST_REQ = 49;
+	GET_SHOW_LIST_RES = 50;
+	ADD_SHOW_REQ = 51;
+	ADD_SHOW_RES = 52;
+	GET_USER_COLLECT_LIST_REQ = 53;
+	GET_USER_COLLECT_LIST_RES = 54;
+	ADD_COLLECT_REQ = 55;
+	ADD_COLLECT_RES = 56;
+	GET_FEED_JOIN_USER_LIST_REQ = 57;
+	GET_FEED_JOIN_USER_LIST_RES = 58;
+	GET_SHOW_DETAIL_REQ = 59;
+	GET_SHOW_DETAIL_RES = 60;
+	GET_USER_FEED_CONTEND_ID_LIST_REQ = 61;
+	GET_USER_FEED_CONTEND_ID_LIST_RES = 62;
+	GET_BANNER_LIST_REQ = 63;
+	GET_BANNER_LIST_RES = 64;
+	DEL_COLLECT_REQ = 65;
+	DEL_COLLECT_RES = 66;
+	CHECK_USER_COLLECT_REQ = 67;
+	CHECK_USER_COLLECT_RES = 68;
+	GET_USER_LUCK_LIST_REQ = 69;
+	GET_USER_LUCK_LIST_RES = 70;
+	GET_FEED_DETAIL_REQ = 71;
+	GET_FEED_DETAIL_RES = 72;
+	GET_USER_TICKET_LIST_REQ = 73;
+	GET_USER_TICKET_LIST_RES = 74;
+}
+
+enum USER_SEX
+{
+	USER_SEX_MALE = 1;
+	USER_SEX_FEMALE = 2;
+}
+
+enum USER_IDENTITY_STATUS
+{
+	USER_IDENTITY_STATUS_NONE = 0;
+	USER_IDENTITY_STATUS_PENDING = 1;
+	USER_IDENTITY_STATUS_PASS = 2;
+	USER_IDENTITY_STATUS_FAIL = 3;
+}
+
+enum FEED_STATUS 
+{
+	FEED_STATUS_INIT = 1;
+	FEED_STATUS_PENDING = 2;
+	FEED_STATUS_FINISH = 3;
+}
+
+enum TICKET_CHECK_STATUS
+{
+	TICKET_CHECK_STATUS_PENDING = 1;
+	TICKET_CHECK_STATUS_PASS = 2;
+	TICKET_CHECK_STATUS_FAIL = 3;
+}
+
+enum PIC_TYPE
+{
+	PIC_TYPE_PUBLIC = 0;
+	PIC_TYPE_PRIVATE = 1;
+}
+
+// body
+message MsgReq
+{
+	optional uint32 sub_cmd = 1;
+	optional string code = 2;
+
+	optional UserLoginReq user_login_req = 11;
+	optional GetPhoneVCReq get_phone_vc_req = 12;
+	optional SetPhoneReq set_phone_req = 13;
+	optional UpdateUserInfoReq update_user_info_req = 14;
+	optional GetUserInfoReq get_user_info_req = 15;
+	optional UpdateUserIdentityInfoReq update_user_identity_info_req = 16;
+	optional GetUserIdentityInfoReq get_user_identity_info_req = 17;
+	optional AddUserRecvAddrInfoReq add_user_recv_addr_info_req = 18;
+	optional DelUserRecvAddrInfoReq del_user_recv_addr_info_req = 19;
+	optional UpdateUserRecvAddrInfoReq update_user_recv_addr_info_req = 20;
+	optional GetUserRecvAddrInfoReq get_user_recv_addr_info_req = 21;
+
+	optional GetPAJSAPISignReq get_pa_jsapi_sign_req = 31;
+	optional GetTypeInfoReq get_type_info_req = 32;
+	optional GetGoodInfoReq get_good_info_req = 33;
+	optional GetPAAccessTokenReq get_pa_access_token_req = 34;
+
+	optional AddTicketReq add_ticket_req = 41;
+	optional GetUserFeedListReq get_user_feed_list_req = 42;
+	optional GetFeedListReq get_feed_list_req = 43;
+	optional GetUserShowListReq get_user_show_list_req = 44;
+	optional GetShowListReq get_show_list_req = 45;
+	optional AddShowReq add_show_req = 46;
+	optional GetUserCollectListReq get_user_collect_list_req= 47;
+	optional AddCollectReq add_collect_req = 48;
+	optional GetFeedJoinUserListReq get_feed_join_user_list_req = 49;
+	optional GetShowDetailReq get_show_detail_req = 50;
+	optional GetUserFeedContendIdListReq get_user_feed_contend_id_list_req = 51;
+	optional GetBannerListReq get_banner_list_req = 52;
+	optional DelCollectReq del_collect_req = 53;
+	optional CheckUserCollectReq check_user_collect_req = 54;
+	optional GetUserLuckListReq get_user_luck_list_req = 55;
+	optional GetFeedDetailReq get_feed_detail_req = 56;
+	optional GetUserTicketListReq get_user_ticket_list_req = 57;
+}
+
+message MsgRes
+{
+	optional uint32 sub_cmd = 1;
+	repeated UserInfo user_info_list = 2;
+
+	optional UserLoginRes user_login_res = 11;
+	optional GetPhoneVCRes get_phone_vc_res = 12;
+	optional SetPhoneRes set_phone_res = 13;
+	optional UpdateUserInfoRes update_user_info_res = 14;
+	optional GetUserInfoRes get_user_info_res = 15;
+	optional UpdateUserIdentityInfoRes update_user_identity_info_res = 16;
+	optional GetUserIdentityInfoRes get_user_identity_info_res = 17;
+	optional AddUserRecvAddrInfoRes add_user_recv_addr_info_res = 18;
+	optional DelUserRecvAddrInfoRes del_user_recv_addr_info_res = 19;
+	optional UpdateUserRecvAddrInfoRes update_user_recv_addr_info_res = 20;
+	optional GetUserRecvAddrInfoRes get_user_recv_addr_info_res = 21;
+
+	optional GetPAJSAPISignRes get_pa_jsapi_sign_res = 31;
+	optional GetTypeInfoRes get_type_info_res = 32;
+	optional GetGoodInfoRes get_good_info_res = 33;
+	optional GetPAAccessTokenRes get_pa_access_token_res = 40;
+
+	optional AddTicketRes add_ticket_res = 41;
+	optional GetUserFeedListRes get_user_feed_list_res = 42;
+	optional GetFeedListRes get_feed_list_res = 43;
+	optional GetUserShowListRes get_user_show_list_res = 44;
+	optional GetShowListRes get_show_list_res = 45;
+	optional AddShowRes add_show_res = 46;
+	optional GetUserCollectListRes get_user_collect_list_res = 47;
+	optional AddCollectRes add_collect_res = 48;
+	optional GetFeedJoinUserListRes get_feed_join_user_list_res = 49;
+	optional GetShowDetailRes get_show_detail_res = 50;
+	optional GetUserFeedContendIdListRes get_user_feed_contend_id_list_res = 51;
+	optional GetBannerListRes get_banner_list_res = 52;
+	optional DelCollectRes del_collect_res = 53;
+	optional CheckUserCollectRes check_user_collect_res = 54;
+	optional GetUserLuckListRes get_user_luck_list_res = 55;
+	optional GetFeedDetailRes get_feed_detail_res = 56;
+	optional GetUserTicketListRes get_user_ticket_list_res = 57;
+}
+
+//
+message UserLoginReq
+{
+}
+
+message UserLoginRes
+{
+}
+
+message GetPhoneVCReq
+{
+	optional string phone = 1;
+}
+
+message GetPhoneVCRes
+{		
+}
+
+message SetPhoneReq
+{
+	optional string phone = 1;
+	optional string vc = 2;
+}
+
+message SetPhoneRes
+{
+}
+
+message UpdateUserInfoReq
+{
+	optional string self_desc = 1;
+}
+
+message UpdateUserInfoRes
+{
+}
+
+message GetUserInfoReq
+{
+	repeated uint64 user_id_list = 1;
+}
+
+message GetUserInfoRes
+{		
+}
+
+message UpdateUserIdentityInfoReq
+{
+	optional UserIdentityInfo user_identity_info = 1;
+}
+
+message UpdateUserIdentityInfoRes
+{
+}
+
+message GetUserIdentityInfoReq
+{
+}
+
+message GetUserIdentityInfoRes
+{		
+	optional UserIdentityInfo user_identity_info = 1;
+}
+message AddUserRecvAddrInfoReq
+{
+	optional UserRecvAddrInfo user_recv_addr_info = 1;
+	optional uint32 set_default_addr = 2;
+}
+
+message AddUserRecvAddrInfoRes
+{
+	optional uint32 addr_num = 1;
+}
+
+message DelUserRecvAddrInfoReq
+{
+	optional uint32 addr_num = 1;
+}
+
+message DelUserRecvAddrInfoRes
+{
+}
+
+message UpdateUserRecvAddrInfoReq
+{
+	optional UserRecvAddrInfo user_recv_addr_info = 1;
+	optional uint32 set_default_addr = 2;
+}
+
+message UpdateUserRecvAddrInfoRes
+{
+}
+
+message GetUserRecvAddrInfoReq
+{
+}
+
+message GetUserRecvAddrInfoRes
+{		
+	repeated UserRecvAddrInfo user_recv_addr_info_list = 1;
+}
+
+message GetPAJSAPISignReq
+{
+	optional string pa_appid = 1;
+	optional string req_url = 2;
+}
+
+message GetPAJSAPISignRes
+{
+	optional string pa_appid = 1;
+	optional string req_url = 2;
+	optional string sign = 3;
+	optional string nonce = 4;
+	optional uint64 timestamp = 5;
+}
+
+message GetTypeInfoReq
+{
+}
+
+message GetTypeInfoRes
+{
+	repeated GoodType good_type_list = 1;
+}
+
+message GetGoodInfoReq
+{
+}
+
+message GetGoodInfoRes
+{
+	repeated GoodInfo good_info_list = 1;
+}
+
+message AddTicketReq
+{
+	optional TicketInfo ticket_info = 1;
+}
+
+message AddTicketRes
+{
+	optional uint64 ticket_id = 1;
+}
+
+message GetUserFeedListReq
+{
+	optional uint64 user_id = 1;
+	optional uint32 offset = 2;
+	optional uint32 limit = 3;
+}
+
+message GetUserFeedListRes
+{
+	repeated FeedInfo feed_info_list = 1;
+	repeated GoodInfo good_info_list = 2;
+}
+
+message GetFeedListReq
+{
+	optional uint64 good_id = 1;
+	optional uint32 begin_feed_id = 2;
+	optional uint32 limit = 3;
+}
+
+message GetFeedListRes
+{
+	repeated FeedInfo feed_info_list = 1;
+	repeated GoodInfo good_info_list = 2;
+}
+
+message GetFeedDetailReq
+{
+	repeated uint64 feed_id_list = 1;
+}
+
+message GetFeedDetailRes
+{
+	repeated FeedInfo feed_info_list = 1;
+	repeated GoodInfo good_info_list = 2;
+}
+
+message GetFeedJoinUserListReq
+{
+	optional uint64 feed_id = 1;
+	optional uint64 begin_ticket_id = 2;
+	optional uint32 limit = 3;
+}
+
+message GetFeedJoinUserListRes
+{
+	repeated ContendInfo contend_info_list = 1;
+}
+
+message GetShowDetailReq
+{
+	optional uint64 show_id = 1;
+}
+
+message GetShowDetailRes
+{
+	optional ShowInfo show_info = 1;
+	optional FeedInfo feed_info = 2;
+}
+
+message GetUserFeedContendIdListReq
+{
+	optional uint64 user_id = 1;
+	repeated uint64 feed_id_list = 2;
+}
+
+message GetUserFeedContendIdListRes
+{
+	repeated FeedContendInfo feed_contend_info_list = 1;
+}
+
+
+
+message GetUserShowListReq
+{
+	optional uint64 user_id = 1;
+	optional uint32 begin_show_id = 2;
+	optional uint32 limit = 3;
+}
+
+message GetUserShowListRes
+{
+	repeated ShowInfo show_info_list = 1;
+}
+
+message GetShowListReq
+{
+	optional uint32 begin_show_id = 1;
+	optional uint32 limit = 2;
+}
+
+message GetShowListRes
+{
+	repeated ShowInfo show_info_list = 1;
+}
+
+message AddShowReq
+{
+	optional ShowInfo show_info = 1;
+}
+
+message AddShowRes
+{
+	optional uint64 show_id = 1;
+}
+
+message GetUserCollectListReq
+{
+	optional uint64 begin_ts = 1;
+	optional uint32 limit = 2;
+}
+
+message GetUserCollectListRes
+{
+	repeated CollectInfo collect_info_list = 1;
+	repeated FeedInfo feed_info_list = 2;
+	repeated GoodInfo good_info_list = 3;
+}
+
+message AddCollectReq
+{
+	optional CollectInfo collect_info = 1;
+}
+
+message AddCollectRes
+{
+}
+
+message DelCollectReq
+{
+	optional uint64 feed_id = 1;
+}
+
+message DelCollectRes
+{
+}
+
+message CheckUserCollectReq
+{
+	repeated uint64 feed_id_list = 1;
+}
+
+message CheckUserCollectRes
+{
+	repeated UserCollectFlag user_collect_flag_list = 1;
+}
+
+message GetUserLuckListReq
+{
+	optional uint64 user_id = 1;
+	optional uint64 begin_feed_id = 2;
+	optional uint32 limit = 3;
+}
+
+message GetUserLuckListRes
+{
+	repeated FeedInfo feed_info_list = 1;
+	repeated GoodInfo good_info_list = 2;
+}
+
+message GetBannerListReq
+{
+	optional uint64 begin_banner_id = 1;
+	optional uint32 limit = 2;
+}
+
+message GetBannerListRes
+{
+	repeated BannerInfo banner_info_list = 1;
+}
+
+message GetUserTicketListReq
+{
+	optional uint64 begin_ticket_id = 1;
+	optional uint32 limit = 2;
+}
+
+message GetUserTicketListRes
+{
+	repeated TicketInfo ticket_info_list = 1;
+	repeated FeedInfo feed_info_list = 2;
+	repeated GoodInfo good_info_list = 3;
+}
+
+message GetPAAccessTokenReq
+{
+	optional string pa_appid = 1;
+}
+
+message GetPAAccessTokenRes
+{
+	optional string pa_access_token = 1;
+}
+
+// struct
+message UserInfo
+{
+	optional uint64 user_id = 1;
+	optional string openid = 2;
+	optional string nickname = 3;
+	optional uint32 sex = 4;
+	optional string headimgurl = 5;
+	optional string self_desc = 6;
+	optional string phone = 7;
+	optional uint32 identity_status = 8;
+	optional uint32 user_type = 9;
+	optional uint32 default_addr_num = 10;
+	optional string extra_data = 11;
+}
+
+message UserIdentityInfo
+{
+	optional uint64 user_id = 1;
+	optional uint32 identity_status = 2;
+	optional string phone = 3;
+	optional string identity_num = 4;
+	optional string identity_pic1_id = 5;
+	optional string identity_pic2_id = 6;
+	optional string identity_pic3_id = 7;
+	optional uint64 create_ts = 8;
+	optional uint64 check_ts = 9;
+	optional string check_mgr = 10;
+}
+
+message UserRecvAddrInfo
+{
+	optional uint64 user_id = 1;
+	optional uint32 addr_num = 2;
+	optional string recv_name = 3;
+	optional string identity_num = 4;
+	optional string phone = 5;
+	optional string post_num = 6;
+	optional string addr_province = 7;
+	optional string addr_city = 8;
+	optional string addr_district = 9;
+	optional string addr_detail = 10;
+}
+
+message GoodType
+{
+	optional uint64 good_type = 1;
+	optional string good_type_text = 2;
+	optional string good_type_icon = 3;
+	optional string extra_data = 4;
+	optional uint64 create_ts = 5;
+}
+
+message GoodInfo
+{
+	optional uint64 good_id = 1;
+	optional string good_id_text = 2;
+	optional uint64 good_type = 3;
+	optional string title = 4;
+	optional string good_desc = 5;
+	optional string show_pics = 6;
+	optional uint64 detail_pic_id = 7;
+	optional uint64 total_join_num = 8;
+	optional uint64 create_ts = 9;
+}
+
+message ConsumeType
+{
+	optional uint64 consume_type = 1;
+	optional string consume_type_text = 2;
+	optional uint64 create_ts = 3;
+}
+
+message FeedInfo
+{
+	optional uint64 feed_id = 1;
+	optional uint64 good_id = 2;
+	optional uint64 total_join_num = 3;
+	optional uint64 current_join_num = 4;
+	optional uint64 approved_num = 5;
+	optional uint64 pending_num = 6;
+	optional uint64 create_ts = 7;
+	optional uint32 feed_status = 8;
+	optional uint64 finish_ts = 9;
+	optional uint64 luck_contend_id = 10;
+	optional uint64 luck_user_id = 11;
+	optional uint64 luck_ts = 12;
+	optional uint32 show_status = 13;
+	optional string recv_addr = 14;
+	optional string express_name = 15;
+	optional string express_num = 16;
+	optional string extra_data = 17;
+}
+
+message TicketInfo
+{
+	optional uint64 ticket_id = 1;
+	optional string ticket_pics = 2;
+	optional uint64 user_id = 3;
+	optional string user_ip = 4;
+	optional uint64 feed_id = 5;
+	optional uint32 check_status = 6;
+	optional uint64 contend_id = 7;
+	optional uint64 ticket_price = 8;
+	optional uint32 consume_type = 9;
+	optional uint64 good_id = 10;
+	optional uint64 create_ts = 11;
+	optional uint64 check_ts = 12;
+	optional string check_mgr = 13;
+}
+
+message ContendInfo
+{
+	optional uint64 ticket_id = 1;
+	optional uint64 user_id = 2;
+	optional string user_ip = 3;
+	optional uint64 feed_id = 4;
+	optional uint64 contend_id = 5;
+	optional uint64 create_ts = 6;
+}
+
+message CollectInfo
+{
+	optional uint64 user_id = 1;
+	optional uint64 feed_id = 2;
+	optional uint64 create_ts = 3;
+}
+
+message ShowInfo
+{
+	optional uint64 show_id = 1;
+	optional uint64 user_id = 2;
+	optional uint64 feed_id = 3;
+	optional string title = 4;
+	optional string show_desc = 5;
+	optional string show_pics = 6;
+	optional uint64 create_ts = 7;
+}
+
+message PicInfo
+{
+	optional uint64 pic_id = 1;
+	optional string content = 2;
+	optional uint64 user_id = 3;
+	optional uint64 type = 4;
+}
+
+message FeedContendInfo
+{
+	optional uint64 feed_id = 1;
+	repeated uint64 contend_id_list = 2;
+}
+
+message BannerInfo
+{
+	optional uint64 banner_id = 1;
+	optional uint64 pic_id = 2;
+	optional uint32 content_type = 3;
+	optional string content = 4;
+	optional uint32 del_status = 5;
+	optional uint64 create_ts = 6;
+}
+
+message UserCollectFlag
+{
+	optional uint64 feed_id = 1;
+	optional uint32 flag = 2;
+}

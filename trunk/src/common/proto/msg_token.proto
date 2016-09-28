@@ -1,0 +1,17 @@
+import "comm_struct.proto";
+
+package hoosho.token;
+
+message PATokenInfo
+{
+	optional string pa_appid = 1;
+	optional string pa_access_token = 2;
+	optional string pa_jsapi_ticket = 3;
+}
+
+//下发公众号基础AccessToken
+message PATokenInfoNotify
+{
+	repeated PATokenInfo pa_token_info_list = 1;
+}
+

@@ -1,0 +1,174 @@
+import "j_comm_struct.proto";
+
+package hoosho.j.feeds;
+
+message GetFeedListReq
+{
+	optional uint64 scene_type = 1;
+	optional string openid = 2;
+	optional uint64 begin_feed_id = 3;
+	optional uint64 limit = 4;
+	optional uint64 need_sex = 5;
+}
+
+message GetFeedListRes
+{
+	repeated hoosho.j.commstruct.FeedInfo feed_list = 1;
+}
+
+message GetFeedDetailReq
+{
+	repeated uint64 feed_id_list = 1;
+	optional string openid = 2;
+}
+
+message GetFeedDetailRes
+{
+	repeated hoosho.j.commstruct.FeedInfo feed_list = 1;
+}
+
+message AddFeedReq
+{
+	optional hoosho.j.commstruct.FeedInfo feed_info = 1;
+}
+
+message AddFeedRes
+{
+}
+
+
+message GetFollowListReq
+{
+	optional uint64 scene_type = 1;
+	optional string openid = 2;
+	optional uint64 feed_id = 3;
+	optional uint64 begin_follow_id = 4;
+	optional uint64 limit = 5;
+}
+
+message GetFollowListRes
+{
+	repeated hoosho.j.commstruct.FollowInfo follow_list = 1;
+}
+
+message GetFollowDetailReq
+{
+	repeated uint64 follow_id_list = 1;	
+}
+
+message GetFollowDetailRes
+{
+	repeated hoosho.j.commstruct.FollowInfo follow_list = 1;
+}
+
+message AddFollowReq
+{
+	optional hoosho.j.commstruct.FollowInfo follow_info = 1;
+}
+
+message AddFollowRes
+{
+}
+
+
+message GetListenListReq
+{
+	optional uint64 scene_type = 1;
+	optional string openid = 2;
+	optional uint64 feed_id = 3;
+	optional uint64 begin_ts = 4;
+	optional uint64 limit = 5;
+}
+
+message GetListenListRes
+{
+	repeated hoosho.j.commstruct.FollowInfo follow_list = 1;
+}
+
+message GetListenDetailReq
+{
+	optional uint64 follow_id = 1;	
+	optional string openid = 2;
+	optional string out_trade_no = 3;
+}
+
+message GetListenDetailRes
+{
+	optional hoosho.j.commstruct.ListenInfo listen_info = 1;
+	optional hoosho.j.commstruct.FollowInfo follow_info = 2;
+}
+
+message AddListenReq
+{
+	optional hoosho.j.commstruct.ListenInfo listen_info = 1;
+}
+
+message AddListenRes
+{
+}
+
+message CommentFollowReq
+{
+	optional hoosho.j.commstruct.CommentFollowInfo comment_follow_info = 1;
+}
+
+message CommentFollowRes
+{
+
+}
+
+message GetHistoryListReq
+{
+	optional string openid = 1;
+	optional uint64 begin_ts = 2;
+	optional uint64 limit = 3;
+}
+
+message GetHistoryListRes
+{
+	repeated hoosho.j.commstruct.FeedInfo feed_list = 1;
+}
+
+
+message CheckListenReq
+{
+	repeated hoosho.j.commstruct.CheckListenInfo check_listen_list = 1;
+}
+
+message CheckListenRes
+{
+	repeated hoosho.j.commstruct.CheckListenInfo check_listen_list = 1;
+}
+
+message GetCommentFollowReq
+{
+	repeated hoosho.j.commstruct.CommentFollowInfo comment_follow_list = 1;
+}
+
+message GetCommentFollowRes
+{
+	repeated hoosho.j.commstruct.CommentFollowInfo comment_follow_list = 1;
+}
+
+message SetOutTradeNoReq
+{
+	optional uint64 business_type = 1;
+	optional uint64 business_id = 2;
+	optional string out_trade_no = 3;
+}
+
+message SetOutTradeNoRes
+{
+
+}
+
+message CheckBusinessIdValidReq
+{
+	optional uint64 business_type = 1;
+	optional uint64 business_id = 2;
+}
+
+message CheckBusinessIdValidRes
+{
+}
+

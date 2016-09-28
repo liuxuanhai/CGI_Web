@@ -1,0 +1,276 @@
+import "comm_struct.proto";
+
+package hoosho.feeds;
+
+message QueryFeedReq
+{
+	optional uint64 pa_appid_md5 = 1;
+	optional uint64 openid_md5 = 2;
+	optional uint64 begin_feed_id = 3;
+	optional uint64 limit = 4;
+	optional uint64 type = 5;
+	optional uint64 feed_type = 6;
+	optional uint64 origin_feed_id = 7;
+	optional uint64 order_type = 8;
+	optional uint64 offset = 9;
+}
+message QueryFeedRes
+{
+	optional uint64 total = 1;
+	optional uint64 count = 2;
+	repeated hoosho.commstruct.FeedInfo feed_list = 3;
+	optional uint64 next_feed_id = 4;
+}
+
+message AddFeedReq
+{
+	optional uint64 pa_appid_md5 = 1;
+	optional uint64 openid_md5 = 2;
+	optional uint64 cover_pic_id = 3;
+	optional string pic_id_list = 4;
+	optional string content = 5; 
+	optional uint64 feed_type = 6;
+	optional uint64 origin_feed_id = 7;
+	optional uint64 banner_feed_subtype = 8;
+	optional string url = 9;
+}
+
+message AddFeedRes
+{
+	optional uint64 feed_id = 1;
+}
+
+message DeleteFeedReq
+{
+	optional uint64 pa_appid_md5 = 1;
+	optional uint64 openid_md5 = 2;
+	optional uint64 feed_id = 3;
+}
+
+message DeleteFeedRes
+{
+}
+
+message QueryFeedDetailReq
+{
+	optional uint64 pa_appid_md5 = 1;
+	optional uint64 openid_md5 = 2;
+	repeated uint64 feed_id_list = 3;
+}
+
+message QueryFeedDetailRes
+{
+	repeated hoosho.commstruct.FeedInfo feed_list = 1;
+}
+
+message QueryFollowCommentReq
+{
+	optional uint64 pa_appid_md5 = 1;
+	optional uint64 openid_md5 = 2;
+	optional uint64 feed_id = 3;
+	optional uint64 begin_comment_id = 4;
+	optional uint64 limit = 5;
+}
+
+message QueryFollowCommentRes
+{
+	optional uint64 total = 1;
+	optional uint64 count = 2;
+	repeated hoosho.commstruct.FollowCommentInfo comment_list = 3;
+	optional uint64 next_comment_id = 4;
+}
+
+message AddFollowReq
+{
+	optional uint64 pa_appid_md5 = 1;
+	optional uint64 openid_md5 = 2;
+	optional uint64 feed_id = 3;
+	optional uint32 type = 4;
+	optional uint64 reply_openid_md5 = 5;
+	optional uint64 origin_comment_id = 6;
+	optional string content = 7;
+	optional uint64 feed_owner_openid_md5 = 8;
+	optional uint64 origin_comment_owner_openid_md5 = 9;
+}
+
+message AddFollowRes
+{
+	optional uint64 follow_id = 1;
+}
+
+message DeleteFollowReq
+{
+	optional uint64 pa_appid_md5 = 1;
+	optional uint64 openid_md5 = 2;
+	optional uint64 feed_id = 3;
+	optional uint64 follow_id = 4;
+}
+
+message DeleteFollowRes
+{
+}
+
+message QueryFollowDetailReq
+{
+	optional uint64 pa_appid_md5 = 1;
+	optional uint64 openid_md5 = 2;
+	repeated uint64 follow_id_list = 3;	
+}
+
+message QueryFollowDetailRes
+{
+	repeated hoosho.commstruct.FollowInfo follow_list = 1;
+}
+
+message QueryFollowListReq
+{
+	optional uint64 pa_appid_md5 = 1;
+	optional uint64 openid_md5 = 2;
+}
+
+message QueryFollowListRes
+{
+	repeated uint64 follow_id_list = 1;
+}
+
+message QueryFollowCommentDetailReq
+{	
+	optional uint64 pa_appid_md5 = 1;
+	optional uint64 openid_md5 = 2;
+	repeated uint64 comment_id_list = 3;
+}
+
+message QueryFollowCommentDetailRes
+{
+	repeated hoosho.commstruct.FollowCommentInfo comment_list = 3;
+}
+
+message QueryFavoriteReq
+{
+	optional uint64 pa_appid_md5 = 1;
+	optional uint64 openid_md5 = 2;
+	optional uint64 feed_id = 3;
+	optional uint64 begin_create_ts = 4;
+	optional uint64 limit = 5;
+}
+
+message QueryFavoriteRes
+{
+	optional uint64 total = 1;
+	optional uint64 count = 2;
+	repeated uint64 openid_md5_list = 3;
+	repeated uint64 create_ts_list = 4;
+	optional uint64 next_create_ts = 5;
+}
+
+message AddFavoriteReq
+{
+	optional uint64 pa_appid_md5 = 1;
+	optional uint64 openid_md5 = 2;
+	optional uint64 feed_id = 3;
+	optional uint64 feed_owner_openid_md5 = 4;
+}
+
+message AddFavoriteRes
+{
+	
+}
+
+message DeleteFavoriteReq
+{
+	optional uint64 pa_appid_md5 = 1;
+	optional uint64 openid_md5 = 2;
+	optional uint64 feed_id = 3;
+}
+
+message DeleteFavoriteRes
+{
+	
+}
+
+message QueryFeedListFavoriteReq
+{
+	optional uint64 pa_appid_md5 = 1;
+	optional uint64 openid_md5 = 2;
+	repeated uint64 feed_id_list = 3;
+}
+
+message QueryFeedListFavoriteRes
+{
+	repeated uint64 favorite_list = 1;
+}
+
+message QueryCollectReq
+{
+	optional uint64 pa_appid_md5 = 1;
+	optional uint64 openid_md5 = 2;
+	optional uint64 begin_create_ts = 3;
+	optional uint64 limit = 4;
+}
+
+message QueryCollectRes
+{
+	optional uint64 total = 1;
+	optional uint64 count = 2;
+	repeated uint64 feed_id_list = 3;
+	repeated uint64 create_ts_list = 4;
+	optional uint64 next_create_ts = 5;
+}
+
+message AddCollectReq
+{
+	optional uint64 pa_appid_md5 = 1;
+	optional uint64 openid_md5 = 2;
+	optional uint64 feed_id = 3;
+}
+
+message AddCollectRes
+{
+	
+}
+
+message DeleteCollectReq
+{
+	optional uint64 pa_appid_md5 = 1;
+	optional uint64 openid_md5 = 2;
+	optional uint64 feed_id = 3;
+}
+
+message DeleteCollectRes
+{
+	
+}
+
+message QueryFeedListCollectReq
+{
+	optional uint64 pa_appid_md5 = 1;
+	optional uint64 openid_md5 = 2;
+	repeated uint64 feed_id_list = 3;
+}
+
+message QueryFeedListCollectRes
+{
+	repeated uint64 collect_list = 1;
+}
+
+message AddReportFeedReq
+{
+	optional hoosho.commstruct.FeedReportInfo feed_report_info = 1;
+}
+
+message AddReportFeedRes
+{
+}
+
+message QueryUserForbidReq
+{
+	optional uint64 pa_appid_md5 = 1;
+	optional uint64 openid_md5 = 2;
+}
+
+message QueryUserForbidRes
+{
+	optional hoosho.commstruct.UserForbidInfo user_forbid_info = 1;
+}
+
+

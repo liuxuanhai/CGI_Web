@@ -1,0 +1,13 @@
+#!/bin/sh
+
+set -f
+
+echo "Content-type: text/html; charset=utf-8"
+echo
+
+
+USER_PATH=/home/dev/hoosho/chat
+FILE_PATH="${USER_PATH}/${QUERY_STRING}.html"
+cat $FILE_PATH
+
+

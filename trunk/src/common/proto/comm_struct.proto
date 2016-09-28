@@ -1,0 +1,186 @@
+package hoosho.commstruct;
+
+message UserInfo
+{
+	optional uint32 id = 1;
+	optional string name = 2;
+	optional uint32 age = 3;
+}
+
+message KeyValueIntInt
+{
+	optional uint64 key = 1;
+	optional uint64 value = 2;
+}
+
+message KeyValueIntString
+{
+	optional uint64 key = 1;
+	optional string value = 2;
+}
+
+message UserDetailInfo
+{
+	optional uint64 openid_md5 = 1;
+	optional string openid = 2;
+	optional uint64 portrait_pic_id = 3;
+	optional string portrait_pic_url_wx = 4;
+	optional string nick = 5;
+	optional string nick_wx = 6;
+	optional string addr_country = 7;
+	optional string addr_province = 8;
+	optional string addr_city = 9;
+	optional uint32 sex = 10;
+	optional uint64 phone_no = 11;
+	optional string email = 12;
+	optional string self_desc = 13;
+	optional uint64 main_page_cover_pic_id = 14;
+	optional uint64 hoosho_no = 15;
+	optional uint64 birthday_ts = 16;
+}
+
+
+message MsgContent
+{
+	optional uint64 id = 1;
+	optional uint64 create_ts = 2;
+	optional string content = 3;
+	optional uint64 openid_md5_from = 4;
+	optional uint64 openid_md5_to = 5;
+}
+
+message Session
+{
+	optional uint64 openid_md5_from = 1;
+	optional uint64 openid_md5_to = 2;
+	optional string content = 3;
+	optional uint64 create_ts = 4;
+	optional uint32 newmsg_status = 5;
+}
+
+message FeedInfo
+{
+	optional uint64 pa_appid_md5 = 1;
+	optional uint64 openid_md5 = 2;
+	optional uint64 feed_id = 3;
+	optional uint64 cover_pic_id = 4;
+	optional string pic_id_list = 5;
+	optional string content = 6;
+	optional uint64 num_favorite = 7;
+	optional uint64 num_share = 8;
+	optional uint64 num_comment = 9;
+	optional uint64 num_read = 10;
+	optional uint64 create_ts = 11;
+	optional uint64 del_ts = 12;
+	optional uint64 feed_type = 13;
+	optional string extra_data_0= 14;
+	optional string extra_data_1= 15;
+	optional string extra_data_2= 16;
+	optional uint64 num_feed = 17;  //当feed_type=2（话题）时有效，表示话题下的feed数
+}
+
+message FollowInfo
+{
+	optional uint64 follow_id = 1;
+	optional string content = 2;
+	optional uint64 feed_id = 3;
+	optional uint32 type = 4;
+	optional uint64 origin_comment_id = 5;
+	optional uint64 openid_md5_from = 6;
+	optional uint64 openid_md5_to = 7;
+	optional uint64 create_ts = 8;
+	optional uint64 del_ts = 9;
+}
+
+message FollowCommentInfo
+{
+	optional FollowInfo comment = 1;
+	repeated FollowInfo reply_list = 2;
+}
+
+message FeedReportInfo
+{
+	optional uint64 pa_appid_md5 = 1;
+	optional uint64 openid_md5_from = 2;
+	optional uint64 openid_md5_to = 3;
+	optional uint64 feed_id = 4;
+	optional uint64 report_ts = 5;
+	optional string report_reason = 6;
+}
+
+message UserForbidInfo
+{
+	optional uint64 pa_appid_md5 = 1;
+	optional uint64 openid_md5 = 2;
+	optional uint64 until_ts = 3;
+}
+
+message NoticeRecord
+{
+	optional uint64 pa_appid_md5 = 1;
+	optional uint64 openid_md5 = 2;
+	optional uint32 type = 3;
+	optional uint32 status = 4;
+	optional uint64 create_ts = 5;
+	optional string extra_data_0 = 6;
+	optional string extra_data_1 = 7;
+	optional string extra_data_2 = 8;
+}
+message SysNotice
+{
+	optional uint64 pa_appid_md5 = 1;
+	optional uint64 create_ts = 2;
+	optional string title = 3;
+	optional string content = 4;
+}
+message SystemMsg
+{
+	optional uint64 pa_appid_md5 = 1;
+	optional uint64 create_ts = 2;
+	optional string title = 3;
+	optional string content = 4;
+}
+
+message PAInfo
+{
+	optional string appid = 1;
+	optional string name = 2;
+	optional string simple_desc = 3;
+	optional string portrait_pic_id = 4;
+}
+
+message PAMark
+{
+	repeated uint32 filed_list = 1;
+}
+
+message UserMark
+{
+	optional uint64 openid_md5 = 1;
+	optional uint64 pa_appid_md5 = 2;
+	optional uint64 pa_openid = 3;
+	optional uint32 is_follow = 4;
+	optional uint64 create_ts = 5;
+}
+
+message TabInfo
+{
+	optional uint32 id = 1;
+	optional string name = 2;
+	optional string extra_data_0 = 3;
+}
+
+message ExpertFlag
+{
+	optional uint64 appid_md5 = 1;
+	optional uint64 openid_md5 = 2;
+	optional bool flag = 3;
+}
+
+message RedPointInfo
+{
+	optional uint64 type = 1;
+	optional uint64 value = 2;
+}
+
+

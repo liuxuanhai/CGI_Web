@@ -1,0 +1,132 @@
+import "comm_struct.proto";
+
+package hoosho.pa;
+
+//增添公众号
+message PAAddReq 
+{
+	optional hoosho.commstruct.PAInfo pa_info = 1;
+}
+message PAAddRes
+{
+}
+
+//更新公众号
+message PAUpdateReq
+{
+	optional hoosho.commstruct.PAInfo pa_info = 1;
+}
+
+message PAUpdateRes
+{
+}
+
+//删除公众号
+message PADeleteReq
+{
+	optional uint64 appid_md5 = 1;
+}
+
+message PADeleteRes
+{
+}
+
+//查询公众号
+message PAGetReq
+{
+	optional uint64 appid_md5 = 1;
+}
+
+message PAGetRes
+{
+	optional hoosho.commstruct.PAInfo pa_info = 1;
+}
+
+//根据预授权码拉取用户基本信息
+message ParsePreAuthCodeReq
+{
+	optional string pre_auth_code = 1;
+}
+
+message ParsePreAuthCodeRes
+{
+	optional hoosho.commstruct.UserDetailInfo user_detail_info = 1;
+}
+
+//获取JSAPI签名
+message GetJSAPISignReq
+{
+	optional string req_url = 1;
+}
+
+message GetJSAPISignRes
+{
+	optional string pa_appid = 1;
+	optional string sign = 2;
+	optional string nonce = 3;
+	optional uint64 timestamp = 4;
+	optional string req_url = 5;
+}
+
+//根据mediaId去wx下载图片
+message DownLoadPicResourceReq
+{
+	optional string media_id = 1;
+}
+message DownLoadPicResourceRes
+{
+	optional bytes media_data = 1;
+}
+
+//查询达人列表
+message QueryPaExpertReq
+{
+	optional uint64 appid_md5 = 1;
+	optional uint64 begin_create_ts = 2;
+	optional uint64 limit = 3;
+}
+message QueryPaExpertRes
+{
+	repeated uint64 openid_md5_list = 1;
+}
+
+//精选页面标签管理
+message QueryPaTabReq
+{
+	optional uint64 appid_md5 = 1;
+}
+message QueryPaTabRes
+{
+	repeated hoosho.commstruct.TabInfo tab_info = 1;
+}
+
+message AddPaTabReq
+{
+
+}
+message AddPaTabRes
+{
+
+}
+
+message UpdatePaTabReq
+{
+
+}
+message UpdatePaTabRes
+{
+
+}
+
+message DeletePaTabReq
+{
+
+}
+message DeletePaTabRes
+{
+
+}
+
+
+
+

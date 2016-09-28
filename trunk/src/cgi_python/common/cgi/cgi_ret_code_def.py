@@ -1,0 +1,7 @@
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
+
+class CGI_RET_CODE:
+	CGI_RET_CODE_OK = 0
+	CGI_RET_CODE_SERVER_BUSY = 100002
+	CGI_RET_CODE_INVALID_PARAM = 100003

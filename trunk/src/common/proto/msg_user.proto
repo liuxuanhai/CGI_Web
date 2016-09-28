@@ -1,0 +1,106 @@
+import "comm_struct.proto";
+
+package hoosho.user;
+
+
+message UpdateUserDetailInfoReq
+{
+	optional hoosho.commstruct.UserDetailInfo user_detail_info = 1;
+}
+message UpdateUserDetailInfoRes
+{
+}
+
+message QueryUserDetailInfoReq
+{
+	repeated uint64 openid_md5_list = 1;
+}
+message QueryUserDetailInfoRes
+{
+	repeated hoosho.commstruct.UserDetailInfo user_detail_info_list = 1;
+}
+
+
+message QueryUserFansReq
+{
+	optional uint64 openid_md5 = 1;
+}
+message QueryUserFansRes
+{
+	repeated uint64 openid_md5_list = 1;
+}
+
+message QueryUserFansNumReq
+{
+	repeated uint64 openid_md5_list = 1;
+}
+message QueryUserFansNumRes
+{
+	repeated hoosho.commstruct.KeyValueIntInt fans_num_list = 1;
+}
+
+message QueryUserFollowsReq
+{
+	optional uint64 openid_md5 = 1;
+}
+message QueryUserFollowsRes
+{
+	repeated uint64 openid_md5_list = 1;
+}
+
+message UserFollowReq
+{
+	optional uint64 openid_md5_from = 1;
+	optional uint64 openid_md5_to = 2;
+	optional uint64 relation = 3;  //1:follow, 2:cancel follow
+}
+message UserFollowRes
+{
+}
+
+message UserParsePreAuthCodeReq
+{
+	optional string pre_auth_code = 1;
+}
+
+message UserParsePreAuthCodeRes
+{
+	optional hoosho.commstruct.UserDetailInfo user_detail_info = 1;
+}
+
+
+message QueryUserPowerReq
+{
+	optional uint64 openid_md5 = 1;
+	optional uint64 appid_md5 = 2;
+}
+message QueryUserPowerRes
+{
+	repeated uint64 power_list = 1; //1:管理员 2:创建话题 3:创建精华Feed 4:达人管理 5:banner管理; 其他以后再定
+}
+
+message QueryUserZombieReq
+{
+	optional string uin = 1;
+}
+message QueryUserZombieRes
+{
+	repeated uint64 openid_md5_list = 1;
+}
+
+message QueryUserPaReq
+{
+	optional string uin = 1;
+}
+message QueryUserPaRes
+{
+	repeated uint64 appid_md5_list = 1;
+}
+
+message QueryUserZomanagerReq
+{
+}
+message QueryUserZomanagerRes
+{
+	repeated string uin_list = 1;
+}

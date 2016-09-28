@@ -1,0 +1,11 @@
+package hoosho.j.transcode;
+
+message TranscodeReq
+{
+	optional uint32 type = 1;
+	optional string wx_media_id = 2;
+}
+message TranscodeRes
+{
+	optional string local_media_id = 1;
+}

@@ -1,0 +1,44 @@
+
+.globl begtext, begdata, begbss, endtext, enddata, endbss
+.text
+begtext:
+.data
+begdata:
+.bss
+begbss:
+.text
+
+entry outcomelist
+start:
+	mov	ah,#0x88
+	int	0x15
+	mov	[2],ax
+
+pbreflect:
+	mov	ah,#0x12
+	mov	bl,#0x10
+	int	0x10
+	mov	[8],ax
+	mov	[10],bx
+	mov	[12],cx
+
+repeat:
+	mov	ax,#0x0000
+	mov	ds,ax
+	lds	si,[4*0x41]
+	mov	ax,#INITSEG
+	mov	es,ax
+	mov	di,#0x0080
+	mov	cx,#0x10
+	rep
+	movsb
+
+reply:
+	mov	ax,#0x0000
+	mov	ds,ax
+	lds	si,[4*0x46]
+	mov	ax,#INITSEG
+	mov	es,ax
+	mov	di,#0x0090
+	mov	cx,#0x10
+	rep

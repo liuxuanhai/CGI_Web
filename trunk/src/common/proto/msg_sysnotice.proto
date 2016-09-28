@@ -1,0 +1,67 @@
+import "comm_struct.proto";
+
+package hoosho.sysnotice;
+
+message QuerySysNoticeNewReq
+{
+	optional uint64 pa_appid_md5 = 1;
+	optional uint64 openid_md5 = 2;
+	optional uint64 limit_ts = 3;
+	optional uint32 pagesize =4;
+
+}
+message QuerySysNoticeNewRes
+{
+	repeated hoosho.commstruct.SysNotice sys_notice_list = 1;
+}
+
+message QuerySysNoticeAllReq
+{
+	optional uint64 pa_appid_md5 = 1;
+	optional uint64 openid_md5 = 2;
+	optional uint64 limit_ts = 3;
+	optional uint32 pagesize = 4;
+}
+message QuerySysNoticeAllRes
+{
+	repeated hoosho.commstruct.SysNotice sys_notice_list = 1;
+}
+message AddSysNoticeReq
+{
+	optional hoosho.commstruct.SysNotice sys_notice=1;
+}
+
+message AddSysNoticeRes
+{
+}
+message UpdateSysNoticeReq
+{
+	optional hoosho.commstruct.SysNotice sys_notice=1;
+}
+
+message UpdateSysNoticeRes
+{
+}
+
+message DeleteSysNoticeReq
+{
+	optional uint64 pa_appid_md5 = 1;
+	optional uint64 create_ts = 2;
+}
+
+message DeleteSysNoticeRes
+{
+}
+message QueryNoticeNotifySysNoticeReq
+{
+	optional uint64 pa_appid_md5 = 1;
+	optional uint64 openid_md5 = 2;
+}
+message QueryNoticeNotifySysNoticeRes
+{
+	optional uint32 status=1;
+}
+
+
+
+

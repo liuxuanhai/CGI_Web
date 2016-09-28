@@ -1,0 +1,46 @@
+import "comm_struct.proto";
+
+package hoosho.test;
+
+message QueryReq
+{
+	optional uint32 id = 1;
+}
+message QueryRes
+{
+	optional hoosho.commstruct.UserInfo user_info = 1;
+}
+
+message AddReq
+{
+	optional hoosho.commstruct.UserInfo user_info = 1;
+}
+
+message AddRes
+{
+}
+
+message UpdateReq
+{
+	optional hoosho.commstruct.UserInfo user_info = 1;
+}
+
+message UpdateRes
+{
+}
+
+message DeleteReq
+{
+	optional uint32 id = 1;
+}
+
+message DeleteRes
+{
+}
+
+
+
+
+
+
+

@@ -1,0 +1,36 @@
+import "comm_struct.proto";
+
+package hoosho.usermark;
+
+message QueryUserMarkReq
+{
+	optional uint64 openid_md5 = 1;
+}
+message QueryUserMarkRes
+{
+	repeated hoosho.commstruct.UserMark usermark = 1;
+}
+message AddUserMarkReq
+{
+	optional hoosho.commstruct.UserMark usermark = 1;
+}
+message AddUserMarkRes
+{
+
+}
+message UpdateUserMarkReq
+{
+
+}
+message UpdateUserMarkRes
+{
+
+}
+message DeleteUserMarkReq
+{
+    optional uint64 openid_md5 = 1;
+}
+message DeleteUserMarkRes
+{
+
+}

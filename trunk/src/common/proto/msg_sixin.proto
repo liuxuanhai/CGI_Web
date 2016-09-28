@@ -1,0 +1,143 @@
+import "comm_struct.proto";
+
+package hoosho.sixin;
+
+message QuerySixinReq
+{
+	optional uint64 msg_id = 1;
+	optional uint32 amount = 2;
+	optional uint64 openid_md5_from = 3;
+	optional uint64 openid_md5_to = 4;
+}
+message QuerySixinRes
+{
+	repeated hoosho.commstruct.MsgContent msg_content = 1;
+}
+
+message AddSixinReq
+{
+	optional hoosho.commstruct.MsgContent msg_content = 1;
+}
+
+message AddSixinRes
+{
+	optional uint64 msg_id = 1;
+	optional uint64 create_ts = 2;
+}
+
+message DeleteSixinReq
+{
+	optional uint64 msg_id = 1;
+	optional uint64 openid_md5_from = 2;
+	optional uint64 openid_md5_to = 3;
+}
+
+message DeleteSixinRes
+{
+}
+
+message QuerySixinNewMsgStatusReq
+{
+	optional uint64 openid_md5 = 1;
+}
+
+message QuerySixinNewMsgStatusRes
+{
+	optional uint32 newmsg_status = 1;
+}
+
+message QuerySixinSessionListReq
+{
+	optional uint64 openid_md5 = 1;
+}
+
+message QuerySixinSessionListRes
+{
+	repeated hoosho.commstruct.Session session = 1;
+}
+
+message DeleteSessionReq
+{
+	optional uint64 openid_md5_from = 1;
+	optional uint64 openid_md5_to = 2;
+}
+
+message DeleteSessionRes
+{
+}
+
+message QuerySystemRedPointReq
+{
+	optional uint64 openid_md5 = 1;
+	optional uint64 pa_appid_md5 = 2;
+}
+
+message QuerySystemRedPointRes
+{
+	repeated hoosho.commstruct.RedPointInfo red_point_info = 1;
+}
+
+message UpdateSystemRedPointReq
+{
+	optional uint64 openid_md5 = 1;
+	optional uint64 pa_appid_md5 = 2;
+	optional uint64 type = 3;	
+	optional uint64 opt = 4;
+}
+
+message UpdateSystemRedPointRes
+{
+}
+
+message AddNoticeRecordReq
+{
+	optional hoosho.commstruct.NoticeRecord notice_record =1;
+}
+
+message AddNoticeRecordRes
+{
+}
+
+message QueryNoticeRecordReq
+{
+	optional uint64 pa_appid_md5 = 1;
+	optional uint64 openid_md5 = 2;
+	optional uint32 type = 3;
+	optional uint64 limit_ts = 4;
+	optional uint32 pagesize = 5;
+}
+
+message QueryNoticeRecordRes
+{
+	 repeated hoosho.commstruct.NoticeRecord notice_record_list =1;
+}
+
+message DeleteNoticeRecordReq
+{
+	optional uint64 pa_appid_md5 = 1;
+	optional uint64 openid_md5 = 2;
+	optional uint64 create_ts = 3;
+	optional uint32 type=4;
+}
+
+message DeleteNoticeRecordRes
+{
+}
+
+message QuerySystemMsgReq
+{
+	optional uint64 openid_md5 = 1;
+	optional uint64 pa_appid_md5 = 2;
+	optional uint64 begin_ts = 3;
+	optional uint64 limit = 4;
+}
+
+message QuerySystemMsgRes
+{
+	repeated hoosho.commstruct.SystemMsg system_msg_list = 1;
+}
+
+
+
+
+

@@ -1,0 +1,619 @@
+import "comm_enum.proto";
+import "msg_test.proto";
+import "msg_sixin.proto";
+import "msg_user.proto";
+import "msg_feeds.proto";
+import "msg_noticenotify.proto";
+import "msg_sysnotice.proto";
+import "msg_pa.proto";
+import "msg_config.proto";
+import "msg_mark.proto";
+import "msg_token.proto";
+
+import "j_comm_enum.proto";
+import "j_msg_feeds.proto";
+import "j_msg_pay.proto";
+import "j_msg_user.proto";
+import "j_msg_transcode.proto";
+
+import "z_msg.proto";
+import "s_msg.proto";
+
+package hoosho.msg;
+
+enum MSG_CMD
+{
+//------------------------------------------------------------------------
+		// PROJECT H
+
+		QUERY_USER_INFO_REQ  = 0x1;
+		QUERY_USER_INFO_RES  = 0x2;
+		ADD_USER_INFO_REQ  = 0x3;
+		ADD_USER_INFO_RES  = 0x4;
+		UPDATE_USER_INFO_REQ  = 0x5;
+		UPDATE_USER_INFO_RES  = 0x6;
+		DELETE_USER_INFO_REQ  = 0x7;
+		DELETE_USER_INFO_RES  = 0x8;
+		
+		//msg
+		QUERY_MSG_REQ = 0x1001;
+		QUERY_MSG_RES = 0x1002;
+		ADD_MSG_REQ = 0x1003;
+		ADD_MSG_RES = 0x1004;
+		DELETE_MSG_REQ = 0x1005;
+		DELETE_MSG_RES = 0x1006;
+		QUERY_MSG_NEWMSG_STATUS_REQ = 0x1007;
+		QUERY_MSG_NEWMSG_STATUS_RES = 0x1008;
+		QUERY_MSG_SESSION_LIST_REQ = 0x1009;
+		QUERY_MSG_SESSION_LIST_RES = 0x100a;
+		DELETE_SESSION_REQ = 0x100b;
+		DELETE_SESSION_RES = 0x100c;
+		QUERY_SYSTEM_RED_POINT_REQ = 0x100d;
+		QUERY_SYSTEM_RED_POINT_RES = 0x100e;
+		UPDATE_SYSTEM_RED_POINT_REQ = 0x100f;
+		UPDATE_SYSTEM_RED_POINT_RES = 0x1010;
+		
+		ADD_NOTICE_RECORD_REQ = 0x1011;
+		ADD_NOTICE_RECORD_RES = 0x1012;
+		QUERY_NOTICE_RECORD_REQ = 0x1013;
+		QUERY_NOTICE_RECORD_RES = 0x1014;
+		DELETE_NOTICE_RECORD_REQ = 0x1015;
+		DELETE_NOTICE_RECORD_RES = 0x1016;
+		
+		QUERY_SYSTEM_MSG_REQ = 0x1017;
+		QUERY_SYSTEM_MSG_RES = 0x1018;
+		
+		
+		//user
+		QUERY_USER_DETAIL_INFO_REQ = 0x2001;
+		QUERY_USER_DETAIL_INFO_RES = 0x2002;
+		UPDATE_USER_DETAIL_INFO_REQ = 0x2003;
+		UPDATE_USER_DETAIL_INFO_RES = 0x2004;
+		QUERY_USER_FANS_REQ = 0x2005;
+		QUERY_USER_FANS_RES = 0x2006;
+		QUERY_USER_FANS_NUM_REQ = 0x2007;
+		QUERY_USER_FANS_NUM_RES = 0x2008;
+		QUERY_USER_FOLLOWS_REQ = 0x2009;
+		QUERY_USER_FOLLOWS_RES = 0x200a;
+		USER_FOLLOW_REQ = 0x200b;
+		USER_FOLLOW_RES = 0x200c;
+		USER_PARSE_PRE_AUTH_CODE_REQ = 0x200d;
+		USER_PARSE_PRE_AUTH_CODE_RES = 0x200e;
+		QUERY_USER_POWER_REQ = 0x2011;
+		QUERY_USER_POWER_RES = 0x2012;		
+		QUERY_USER_ZOMBIE_REQ = 0x2013;
+		QUERY_USER_ZOMBIE_RES = 0x2014;
+		QUERY_USER_PA_REQ = 0x2015;
+		QUERY_USER_PA_RES = 0x2016;		
+		QUERY_USER_ZOMANAGER_REQ = 0x2017;
+		QUERY_USER_ZOMANAGER_RES = 0x2018;
+
+		//feeds
+		//feed
+		QUERY_FEED_REQ = 0x3001;
+		QUERY_FEED_RES = 0x3002;
+		ADD_FEED_REQ = 0x3003;
+		ADD_FEED_RES = 0x3004;
+		DELETE_FEED_REQ = 0x3005;
+		DELETE_FEED_RES = 0x3006;
+		QUERY_FEED_DETAIL_REQ = 0x3007;
+		QUERY_FEED_DETAIL_RES = 0x3008;
+		//follow
+		QUERY_FOLLOW_COMMENT_REQ = 0x3011;
+		QUERY_FOLLOW_COMMENT_RES = 0x3012;
+		ADD_FOLLOW_REQ = 0x3013;
+		ADD_FOLLOW_RES = 0x3014;
+		DELETE_FOLLOW_REQ = 0x3015;
+		DELETE_FOLLOW_RES = 0x3016;
+		QUERY_FOLLOW_DETAIL_REQ = 0x3017;
+		QUERY_FOLLOW_DETAIL_RES = 0x3018;
+		QUERY_FOLLOW_LIST_REQ = 0x3019;
+		QUERY_FOLLOW_LIST_RES = 0x301a;
+		QUERY_FOLLOW_COMMENT_DETAIL_REQ = 0x301b;
+		QUERY_FOLLOW_COMMENT_DETAIL_RES = 0x301c;
+		//favorite
+		QUERY_FAVORITE_REQ = 0x3021;
+		QUERY_FAVORITE_RES = 0x3022;
+		ADD_FAVORITE_REQ = 0x3023;
+		ADD_FAVORITE_RES = 0x3024;
+		DELETE_FAVORITE_REQ = 0x3025;
+		DELETE_FAVORITE_RES = 0x3026;
+		QUERY_FEED_LIST_FAVORITE_REQ = 0x3027;
+		QUERY_FEED_LIST_FAVORITE_RES = 0x3028;
+		//collect
+		QUERY_COLLECT_REQ = 0x3031;
+		QUERY_COLLECT_RES = 0x3032;
+		ADD_COLLECT_REQ = 0x3033;
+		ADD_COLLECT_RES = 0x3034;
+		DELETE_COLLECT_REQ = 0x3035;
+		DELETE_COLLECT_RES = 0x3036;
+		QUERY_FEED_LIST_COLLECT_REQ = 0x3037;
+		QUERY_FEED_LIST_COLLECT_RES = 0x3038;
+		//report
+		ADD_REPORT_FEED_REQ = 0x3041;
+		ADD_REPORT_FEED_RES = 0x3042;
+		QUERY_USER_FORBID_REQ = 0x3043;
+		QUERY_USER_FORBID_RES = 0x3044;
+	
+		//sysnotice
+		QUERY_SYS_NOTICE_ALL_REQ = 0x4001;
+		QUERY_SYS_NOTICE_ALL_RES = 0x4002;
+		QUERY_SYS_NOTICE_NEW_REQ = 0x4003;
+		QUERY_SYS_NOTICE_NEW_RES = 0x4004;
+		UPDATE_SYS_NOTICE_REQ = 0x4005;
+		UPDATE_SYS_NOTICE_RES = 0x4006;
+		DELETE_SYS_NOTICE_REQ = 0x4007;
+		DELETE_SYS_NOTICE_RES = 0x4008;
+		QUERY_NOTICE_NOTIFY_SYS_NOTICE_REQ = 0x4009;
+		QUERY_NOTICE_NOTIFY_SYS_NOTICE_RES = 0x400a;
+		ADD_SYS_NOTICE_REQ = 0x400b;
+		ADD_SYS_NOTICE_RES = 0x400c;
+
+
+		
+		//noticerecord
+		QUERY_NOTICE_NOTIFY_REQ = 0x5001;
+		QUERY_NOTICE_NOTIFY_RES = 0x5002;
+		QUERY_NOTICE_NOTIFY_TYPELIST_REQ = 0x5003;
+		QUERY_NOTICE_NOTIFY_TYPELIST_RES = 0x5004;
+		//QUERY_NOTICE_RECORD_REQ = 0x5005;
+		//QUERY_NOTICE_RECORD_RES = 0x5006;
+		UPDATE_NOTICE_RECORD_REQ = 0x5007;
+		UPDATE_NOTICE_RECORD_RES = 0x5008;
+		//DELETE_NOTICE_RECORD_REQ = 0x5009;
+		//DELETE_NOTICE_RECORD_RES = 0x500a;
+		//ADD_NOTICE_RECORD_REQ = 0x500b;
+		//ADD_NOTICE_RECORD_RES = 0x500c;
+		READ_NOTICE_RECORD_REQ = 0x500d;
+		READ_NOTICE_RECORD_RES = 0x500e;
+
+
+		
+		//public account
+		PARSE_PRE_AUTH_CODE_REQ = 0x6001;
+		PARSE_PRE_AUTH_CODE_RES = 0x6002;
+		GET_JSAPI_SGIN_REQ = 0x6003;
+		GET_JSAPI_SGIN_RES = 0x6004;
+		DOWNLOAD_PIC_RESOURCE_REQ = 0x6005;
+		DOWNLOAD_PIC_RESOURCE_RES = 0x6006;
+		
+		QUERY_PA_EXPERT_REQ = 0x6007;			//查询达人列表
+		QUERY_PA_EXPERT_RES = 0x6008;
+		QUERY_PA_TAB_REQ = 0x6009;
+		QUERY_PA_TAB_RES = 0x600a;
+		
+
+		//config data
+		HOOSHO_NO_APPLY_REQ = 0x7001;
+		HOOSHO_NO_APPLY_RES = 0x7002;
+		
+		//user mark
+		QUERY_USER_MARK_REQ = 0x8001;
+		QUERY_USER_MARK_RES = 0x8002;
+		ADD_USER_MARK_REQ = 0x8003;
+		ADD_USER_MARK_RES = 0x8004;
+		UPDATE_USER_MARK_REQ = 0x8005;
+		UPDATE_USER_MARK_RES = 0x8006;
+		DELETE_USER_MARK_REQ = 0x8007;
+		DELETE_USER_MARK_RES = 0x8008;		
+		
+		//token
+		TOKEN_PA_TOKEN_INFO_NOTIFY = 0x9001;
+
+//------------------------------------------------------------------------
+		// PROJECT J
+
+		//feeds
+		J_GET_FEED_LIST_REQ = 0xa001;
+		J_GET_FEED_LIST_RES = 0xa002;
+		J_GET_FEED_DETAIL_REQ = 0xa003;
+		J_GET_FEED_DETAIL_RES = 0xa004;
+		J_ADD_FEED_REQ = 0xa005;
+		J_ADD_FEED_RES = 0xa006;
+
+		J_GET_FOLLOW_LIST_REQ = 0xa011;
+		J_GET_FOLLOW_LIST_RES = 0xa012;
+		J_GET_FOLLOW_DETAIL_REQ = 0xa013;
+		J_GET_FOLLOW_DETAIL_RES = 0xa014;
+		J_ADD_FOLLOW_REQ = 0xa015;
+		J_ADD_FOLLOW_RES = 0xa016;
+
+		J_GET_LISTEN_LIST_REQ = 0xa021;
+		J_GET_LISTEN_LIST_RES = 0xa022;
+		J_GET_LISTEN_DETAIL_REQ = 0xa023;
+		J_GET_LISTEN_DETAIL_RES = 0xa024;
+		J_ADD_LISTEN_REQ = 0xa025;
+		J_ADD_LISTEN_RES = 0xa026;
+		J_COMMENT_FOLLOW_REQ = 0xa027;
+		J_COMMENT_FOLLOW_RES = 0xa028;
+
+		J_GET_HISTORY_LIST_REQ = 0xa031;
+		J_GET_HISTORY_LIST_RES = 0xa032;
+		
+		J_CHECK_LISTEN_REQ = 0xa041;
+		J_CHECK_LISTEN_RES = 0xa042;
+		J_GET_COMMENT_FOLLOW_REQ = 0xa043;
+		J_GET_COMMENT_FOLLOW_RES = 0xa044; 
+
+		J_SET_OUT_TRADE_NO_REQ = 0xa051;
+		J_SET_OUT_TRADE_NO_RES = 0xa052;
+		J_CHECK_BUSINESS_ID_VALID_REQ = 0xa053;
+		J_CHECK_BUSINESS_ID_VALID_RES = 0xa054;
+	
+		//pay
+		J_PAY_UNIFIEDORDER_REQ = 0xb001;
+		J_PAY_UNIFIEDORDER_RES = 0xb002;		
+		J_PAY_TRANSFER_REQ = 0xb003;
+		J_PAY_TRANSFER_RES = 0xb004;		
+		J_PAY_GET_USER_CASH_REQ = 0xb005;
+		J_PAY_GET_USER_CASH_RES = 0xb006;		
+		J_PAY_QUERY_CASH_FLOW_REQ = 0xb007;
+		J_PAY_QUERY_CASH_FLOW_RES = 0xb008;		
+		J_PAY_UNIFIEDORDER_CALLBACK_REQ = 0xb009;
+		J_PAY_UNIFIEDORDER_CALLBACK_RES = 0xb00a;		
+		J_PAY_UNIFIEDORDER_QUERY_REQ = 0xb00b;
+		J_PAY_UNIFIEDORDER_QUERY_RES = 0xb00c;		
+		J_PAY_LISTEN_INCOME_REQ = 0xb00d;
+		J_PAY_LISTEN_INCOME_RES = 0xb00e;		
+		J_PAY_SENDREDPACK_REQ = 0xb00f;
+		J_PAY_SENDREDPACK_RES = 0xb010;
+		J_PAY_OUTCOME_QUERY_REQ = 0xb011;
+		J_PAY_OUTCOME_QUERY_RES = 0xb012;
+		J_PAY_OUTCOME_COMMIT_REQ = 0xb013;
+		J_PAY_OUTCOME_COMMIT_RES = 0xb014;
+		J_PAY_OUTCOME_CHECK_REQ = 0xb015;
+		J_PAY_OUTCOME_CHECK_RES = 0xb016;
+		J_PAY_OUTCOME_UPDATE_REQ = 0xb017;
+		J_PAY_OUTCOME_UPDATE_RES = 0xb018;
+		
+		//user
+		J_USER_LOGIN_REQ = 0xc001;
+		J_USER_LOGIN_RES = 0xc002;
+		J_CHECK_LOGIN_REQ = 0xc003;
+		J_CHECK_LOGIN_RES = 0xc004;
+		J_GET_USER_INFO_REQ = 0xc005;
+		J_GET_USER_INFO_RES = 0xc006;
+		J_UPDATE_USER_INFO_REQ = 0xc007;
+		J_UPDATE_USER_INFO_RES = 0xc008;
+		J_GET_PA_JSAPI_SIGNATURE_REQ = 0xc009;
+		J_GET_PA_JSAPI_SIGNATURE_RES = 0xc00a;
+		
+		//transcode
+		J_TRANSCODE_REQ = 0xd001;
+		J_TRANSCODE_RES = 0xd002;
+
+		// Z-Project
+		Z_PROJECT_REQ = 0xe001;
+		Z_PROJECT_RES = 0xe002;
+
+		// S-Project
+		S_PROJECT_REQ = 0xe003;
+		S_PROJECT_RES = 0xe004;
+}
+
+enum MSG_RESULT
+{
+		E_OK = 0x0;
+		E_SERVER_INNER_ERROR = 0x1000;
+		E_SERVER_TIMEOUT = 0x1001;
+		E_INVALID_REQ_PARAM = 0x1002;
+		E_ALREADY_EXIST = 0x1003;
+		E_FEED_DELETED = 0x1004;
+		E_REPLY_TO_SELF_INVALID = 0x1005;
+		E_NO_PAY = 0x1006;
+		E_LOGIN_INVALID = 0x1007;
+		
+		E_BALANCE_NOT_ENOUGH = 0x1008;	//余额不足
+		E_PAY_FAIL = 0x1009;			//订单支付失败
+	
+		E_NOT_PA_FANS = 0x100a; 
+
+		E_FOLLOW_HAS_COMMENT = 0x100b; //回答已被评论 
+		E_VERIFYCODE_INVALID = 0x100c; //验证码错误
+
+		E_ORDER_CANNOT_FETCH = 0x100d; //订单已被抢或被取消
+		E_ORDER_CANNOT_FETCH_REPEATED = 0x100e; //已经抢过该单了，耐心等待下单者确认
+		E_ORDER_CANNOT_FETCH_TOOMANY = 0x100f; //该订单已经排满，不能继续排队了
+
+		E_ORDER_CANNOT_CANCEL_WHILE_WAITING_EXISTS = 0x1010; //该订单不能取消， 因为已经有人排队了
+
+		E_ORDER_CANNOT_FETCH_CANCEL_AFTER_CHOSEN = 0x1011; //抢单者不能退出订单排队，因为该sb抢单者已经被下单者确认选择了
+
+		E_AVAILABLE_LOTTERY_TIME_NOT_ENOUGH = 0x1012;	//没有可用的抽奖机会
+
+		//s_project
+		E_SHOW_REPEATED = 0x2001; //重复晒单
+		E_UPLOAD_TICKET_LIMIT = 0x2002; //上传小票次数超出限制
+}
+
+message MsgHead
+{
+		optional uint32 cmd = 1;
+		optional uint32 seq = 2;
+		optional uint32 result = 3;
+}
+
+message Msg
+{
+		optional MsgHead head = 1;
+		optional hoosho.test.QueryReq query_req = 2;
+		optional hoosho.test.QueryRes query_res = 3;
+		optional hoosho.test.AddReq add_req = 4;
+		optional hoosho.test.AddRes add_res = 5;
+		optional hoosho.test.UpdateReq update_req = 6;
+		optional hoosho.test.UpdateRes update_res = 7;
+		optional hoosho.test.DeleteReq delete_req = 8;
+		optional hoosho.test.DeleteRes delete_res = 9;
+
+//------------------------------------------------------------------------
+		// PROJECT H
+
+		//msg
+		optional hoosho.sixin.QuerySixinReq msg_query_req = 0x1001;
+		optional hoosho.sixin.QuerySixinRes msg_query_res = 0x1002;
+		optional hoosho.sixin.AddSixinReq msg_add_req = 0x1003;
+		optional hoosho.sixin.AddSixinRes msg_add_res = 0x1004;
+		optional hoosho.sixin.DeleteSixinReq msg_del_req = 0x1005;
+		optional hoosho.sixin.DeleteSixinRes msg_del_res = 0x1006;
+		optional hoosho.sixin.QuerySixinNewMsgStatusReq msg_query_newmsg_status_req = 0x1007;
+		optional hoosho.sixin.QuerySixinNewMsgStatusRes msg_query_newmsg_status_res = 0x1008;
+		optional hoosho.sixin.QuerySixinSessionListReq msg_query_session_list_req = 0x1009;
+		optional hoosho.sixin.QuerySixinSessionListRes msg_query_session_list_res = 0x100a;
+		optional hoosho.sixin.DeleteSessionReq session_del_req = 0x100b;
+		optional hoosho.sixin.DeleteSessionRes session_del_res = 0x100c;
+		optional hoosho.sixin.QuerySystemRedPointReq query_system_red_point_req = 0x100d;
+		optional hoosho.sixin.QuerySystemRedPointRes query_system_red_point_res = 0x100e;
+		optional hoosho.sixin.UpdateSystemRedPointReq update_system_red_point_req = 0x100f;
+		optional hoosho.sixin.UpdateSystemRedPointRes update_system_red_point_res = 0x1010;		
+		
+		optional hoosho.sixin.AddNoticeRecordReq notice_record_add_req= 0x1011;
+		optional hoosho.sixin.AddNoticeRecordRes notice_record_add_res= 0x1012;
+		optional hoosho.sixin.QueryNoticeRecordReq notice_record_query_req = 0x1013;
+		optional hoosho.sixin.QueryNoticeRecordRes notice_record_query_res = 0x1014;
+		optional hoosho.sixin.DeleteNoticeRecordReq notice_record_delete_req=0x1015;
+		optional hoosho.sixin.DeleteNoticeRecordRes notice_record_delete_res=0x1016;
+		
+		optional hoosho.sixin.QuerySystemMsgReq system_msg_query_req = 0x1017;
+		optional hoosho.sixin.QuerySystemMsgRes system_msg_query_res = 0x1018;
+		
+		
+		//user
+		optional hoosho.user.QueryUserDetailInfoReq query_user_detail_info_req = 0x2001;
+		optional hoosho.user.QueryUserDetailInfoRes query_user_detail_info_res = 0x2002;
+		optional hoosho.user.UpdateUserDetailInfoReq update_user_detail_info_req = 0x2003;
+		optional hoosho.user.UpdateUserDetailInfoRes update_user_detail_info_res = 0x2004;
+		optional hoosho.user.QueryUserFansReq query_user_fans_req = 0x2005;
+		optional hoosho.user.QueryUserFansRes query_user_fans_res = 0x2006;
+		optional hoosho.user.QueryUserFansNumReq query_user_fans_num_req = 0x2007;
+		optional hoosho.user.QueryUserFansNumRes query_user_fans_num_res = 0x2008;
+		optional hoosho.user.QueryUserFollowsReq query_user_follows_req = 0x2009;
+		optional hoosho.user.QueryUserFollowsRes query_user_follows_res = 0x200a;
+		optional hoosho.user.UserFollowReq user_follow_req = 0x200b;
+		optional hoosho.user.UserFollowRes user_follow_res = 0x200c;
+		optional hoosho.user.UserParsePreAuthCodeReq user_parse_pre_auth_code_req = 0x200d;
+		optional hoosho.user.UserParsePreAuthCodeRes user_parse_pre_auth_code_res = 0x200e;
+		optional hoosho.user.QueryUserPowerReq query_user_power_req = 0x2011;
+		optional hoosho.user.QueryUserPowerRes query_user_power_res = 0x2012;		
+		optional hoosho.user.QueryUserZombieReq query_user_zombie_req = 0x2013;
+		optional hoosho.user.QueryUserZombieRes query_user_zombie_res = 0x2014;		
+		optional hoosho.user.QueryUserPaReq query_user_pa_req = 0x2015;
+		optional hoosho.user.QueryUserPaRes query_user_pa_res = 0x2016;
+		optional hoosho.user.QueryUserZomanagerReq query_user_zomanager_req = 0x2017;
+		optional hoosho.user.QueryUserZomanagerRes query_user_zomanager_res = 0x2018;
+		
+		
+	
+		//feeds
+		//feed
+		optional hoosho.feeds.QueryFeedReq query_feed_req = 0x3001;
+		optional hoosho.feeds.QueryFeedRes query_feed_res = 0x3002;
+		optional hoosho.feeds.AddFeedReq add_feed_req = 0x3003;
+		optional hoosho.feeds.AddFeedRes add_feed_res = 0x3004;
+		optional hoosho.feeds.DeleteFeedReq delete_feed_req = 0x3005;
+		optional hoosho.feeds.DeleteFeedRes delete_feed_res = 0x3006;
+		optional hoosho.feeds.QueryFeedDetailReq query_feed_detail_req = 0x3007;
+		optional hoosho.feeds.QueryFeedDetailRes query_feed_detail_res = 0x3008;
+		//follow
+		optional hoosho.feeds.QueryFollowCommentReq query_follow_comment_req = 0x3011;
+		optional hoosho.feeds.QueryFollowCommentRes query_follow_comment_res = 0x3012;
+		optional hoosho.feeds.AddFollowReq add_follow_req = 0x3013;
+		optional hoosho.feeds.AddFollowRes add_follow_res = 0x3014;
+		optional hoosho.feeds.DeleteFollowReq delete_follow_req = 0x3015;
+		optional hoosho.feeds.DeleteFollowRes delete_follow_res = 0x3016;
+		optional hoosho.feeds.QueryFollowDetailReq query_follow_detail_req = 0x3017;
+		optional hoosho.feeds.QueryFollowDetailRes query_follow_detail_res = 0x3018;
+		optional hoosho.feeds.QueryFollowListReq query_follow_list_req = 0x3019;
+		optional hoosho.feeds.QueryFollowListRes query_follow_list_res = 0x301a;
+		optional hoosho.feeds.QueryFollowCommentDetailReq query_follow_comment_detail_req = 0x301b;
+		optional hoosho.feeds.QueryFollowCommentDetailRes query_follow_comment_detail_res = 0x301c;
+		//favorite
+		optional hoosho.feeds.QueryFavoriteReq query_favorite_req = 0x3021;
+		optional hoosho.feeds.QueryFavoriteRes query_favorite_res = 0x3022;
+		optional hoosho.feeds.AddFavoriteReq add_favorite_req = 0x3023;
+		optional hoosho.feeds.AddFavoriteRes add_favorite_res = 0x3024;
+		optional hoosho.feeds.DeleteFavoriteReq delete_favorite_req = 0x3025;
+		optional hoosho.feeds.DeleteFavoriteRes delete_favorite_res = 0x3026;
+		optional hoosho.feeds.QueryFeedListFavoriteReq query_feed_list_favorite_req = 0x3027;
+		optional hoosho.feeds.QueryFeedListFavoriteRes query_feed_list_favorite_res = 0x3028;
+		//collect
+		optional hoosho.feeds.QueryCollectReq query_collect_req = 0x3031;
+		optional hoosho.feeds.QueryCollectRes query_collect_res = 0x3032;
+		optional hoosho.feeds.AddCollectReq add_collect_req = 0x3033;
+		optional hoosho.feeds.AddCollectRes add_collecct_res = 0x3034;
+		optional hoosho.feeds.DeleteCollectReq delete_collect_req = 0x3035;
+		optional hoosho.feeds.DeleteCollectRes delete_collect_res = 0x3036;
+		optional hoosho.feeds.QueryFeedListCollectReq query_feed_list_collect_req = 0x3037;
+		optional hoosho.feeds.QueryFeedListCollectRes query_feed_list_collect_res = 0x3038;
+		//export
+		optional hoosho.feeds.AddReportFeedReq add_report_feed_req = 0x3041;
+		optional hoosho.feeds.AddReportFeedRes add_report_feed_res = 0x3042;
+		optional hoosho.feeds.QueryUserForbidReq query_user_forbid_req = 0x3043;
+		optional hoosho.feeds.QueryUserForbidRes query_user_forbid_res = 0x3044;
+		
+		//sysnotice
+		optional hoosho.sysnotice.QuerySysNoticeAllReq sys_notice_query_all_req= 0x4001;
+		optional hoosho.sysnotice.QuerySysNoticeAllRes sys_notice_query_all_res= 0x4002;
+		optional hoosho.sysnotice.QuerySysNoticeNewReq sys_notice_query_new_req= 0x4003;
+		optional hoosho.sysnotice.QuerySysNoticeNewRes sys_notice_query_new_res= 0x4004;
+		optional hoosho.sysnotice.UpdateSysNoticeReq sys_notice_update_req= 0x4005;
+		optional hoosho.sysnotice.UpdateSysNoticeRes sys_notice_update_res= 0x4006;
+		optional hoosho.sysnotice.DeleteSysNoticeReq sys_notice_del_req= 0x4007;
+		optional hoosho.sysnotice.DeleteSysNoticeRes sys_notice_del_res= 0x4008;
+		optional hoosho.sysnotice.QueryNoticeNotifySysNoticeReq notice_notify_sys_notice_query_req= 0x4009;
+		optional hoosho.sysnotice.QueryNoticeNotifySysNoticeRes notice_notify_sys_notice_query_res= 0x400a;
+		optional hoosho.sysnotice.AddSysNoticeReq sys_notice_add_req= 0x400b;
+		optional hoosho.sysnotice.AddSysNoticeRes sys_notice_add_res= 0x400c;
+
+		//noticerecord
+		optional hoosho.noticenotify.QueryNoticeNotifyReq notice_notify_query_req= 0x5001;
+		optional hoosho.noticenotify.QueryNoticeNotifyRes notice_notify_query_res= 0x5002;
+		optional hoosho.noticenotify.QueryNoticeNotifyTypeListReq notice_notify_typelist_query_req= 0x5003;
+		optional hoosho.noticenotify.QueryNoticeNotifyTypeListRes notice_notify_typelist_query_res= 0x5004;
+		//optional hoosho.noticenotify.QueryNoticeRecordReq notice_record_query_req= 0x5005;
+		//optional hoosho.noticenotify.QueryNoticeRecordRes notice_record_query_res= 0x5006;
+		optional hoosho.noticenotify.UpdateNoticeRecordReq notice_record_update_req= 0x5007;
+		optional hoosho.noticenotify.UpdateNoticeRecordRes notice_record_update_res= 0x5008;
+		//optional hoosho.noticenotify.DeleteNoticeRecordReq notice_record_delete_req=0x5009;
+		//optional hoosho.noticenotify.DeleteNoticeRecordRes notice_record_delete_res=0x500a;
+		//optional hoosho.noticenotify.AddNoticeRecordReq notice_record_add_req= 0x500b;
+		//optional hoosho.noticenotify.AddNoticeRecordRes notice_record_add_res= 0x500c;
+		optional hoosho.noticenotify.ReadNoticeRecordReq notice_record_read_req= 0x500d;
+		optional hoosho.noticenotify.ReadNoticeRecordRes notice_record_read_res= 0x500e;
+
+
+
+		
+
+
+		//public account
+		optional hoosho.pa.ParsePreAuthCodeReq parse_pre_auth_code_req = 0x6001;
+		optional hoosho.pa.ParsePreAuthCodeRes parse_pre_auth_code_res = 0x6002;
+		optional hoosho.pa.GetJSAPISignReq get_jsapisign_req = 0x6003;
+		optional hoosho.pa.GetJSAPISignRes get_jsapisign_res = 0x6004;
+		optional hoosho.pa.DownLoadPicResourceReq download_pic_resource_req = 0x6005;
+		optional hoosho.pa.DownLoadPicResourceRes download_pic_resource_res = 0x6006;
+		
+		optional hoosho.pa.QueryPaExpertReq pa_expert_query_req = 0x6007;
+		optional hoosho.pa.QueryPaExpertRes pa_expert_query_res = 0x6008;
+
+		optional hoosho.pa.AddPaTabReq pa_tab_add_req = 0x6009;
+		optional hoosho.pa.AddPaTabRes pa_tab_add_res = 0x600a;
+		optional hoosho.pa.UpdatePaTabReq pa_tab_update_req = 0x600b;
+		optional hoosho.pa.UpdatePaTabRes pa_tab_update_res = 0x600c;
+		optional hoosho.pa.DeletePaTabReq pa_tab_del_req = 0x600d;
+		optional hoosho.pa.DeletePaTabRes pa_tab_del_res = 0x600e;
+		optional hoosho.pa.QueryPaTabReq pa_tab_query_req = 0x600f;
+		optional hoosho.pa.QueryPaTabRes pa_tab_query_res = 0x6010;
+		
+
+		//config data
+		optional hoosho.config.HooshoNOApplyReq hoosho_no_apply_req = 0x7001;
+		optional hoosho.config.HooshoNOApplyRes hoosho_no_apply_res = 0x7002;
+		
+		//user mark
+		optional hoosho.usermark.QueryUserMarkReq usermark_query_req = 0x8001;
+		optional hoosho.usermark.QueryUserMarkRes usermark_query_res = 0x8002;
+		optional hoosho.usermark.AddUserMarkReq usermark_add_req = 0x8003;
+		optional hoosho.usermark.AddUserMarkRes usermark_add_res = 0x8004;
+		optional hoosho.usermark.UpdateUserMarkReq usermark_update_req = 0x8005;
+		optional hoosho.usermark.UpdateUserMarkRes usermark_update_res = 0x8006;
+		optional hoosho.usermark.DeleteUserMarkReq usermark_del_req = 0x8007;
+		optional hoosho.usermark.DeleteUserMarkReq usermark_del_res = 0x8008;
+
+
+		//token
+		optional hoosho.token.PATokenInfoNotify token_info_notify = 0x9001;
+
+
+//------------------------------------------------------------------------
+		// PROJECT J
+
+		//feeds
+		optional hoosho.j.feeds.GetFeedListReq j_feeds_get_feed_list_req = 0xa001;
+		optional hoosho.j.feeds.GetFeedListRes j_feeds_get_feed_list_res = 0xa002;
+		optional hoosho.j.feeds.GetFeedDetailReq j_feeds_get_feed_detail_req = 0xa003;
+		optional hoosho.j.feeds.GetFeedDetailRes j_feeds_get_feed_detail_res = 0xa004;
+		optional hoosho.j.feeds.AddFeedReq j_feeds_add_feed_req = 0xa005;
+		optional hoosho.j.feeds.AddFeedRes j_feeds_add_feed_res = 0xa006;
+
+		optional hoosho.j.feeds.GetFollowListReq j_feeds_get_follow_list_req = 0xa011;
+		optional hoosho.j.feeds.GetFollowListRes j_feeds_get_follow_list_res = 0xa012;
+		optional hoosho.j.feeds.GetFollowDetailReq j_feeds_get_follow_detail_req = 0xa013;
+		optional hoosho.j.feeds.GetFollowDetailRes j_feeds_get_follow_detail_res = 0xa014;
+		optional hoosho.j.feeds.AddFollowReq j_feeds_add_follow_req = 0xa015;
+		optional hoosho.j.feeds.AddFollowRes j_feeds_add_follow_res = 0xa016;
+
+		optional hoosho.j.feeds.GetListenListReq j_feeds_get_listen_list_req = 0xa021;
+		optional hoosho.j.feeds.GetListenListRes j_feeds_get_listen_list_res = 0xa022;
+		optional hoosho.j.feeds.GetListenDetailReq j_feeds_get_listen_detail_req = 0xa023;
+		optional hoosho.j.feeds.GetListenDetailRes j_feeds_get_listen_detail_res = 0xa024;
+		optional hoosho.j.feeds.AddListenReq j_feeds_add_listen_req = 0xa025;
+		optional hoosho.j.feeds.AddListenRes j_feeds_add_listen_res = 0xa026;
+		optional hoosho.j.feeds.CommentFollowReq j_feeds_comment_follow_req = 0xa027;
+		optional hoosho.j.feeds.CommentFollowRes j_feeds_comment_follow_res = 0xa028;
+
+		optional hoosho.j.feeds.GetHistoryListReq j_feeds_get_history_list_req = 0xa031;
+		optional hoosho.j.feeds.GetHistoryListRes j_feeds_get_history_list_res = 0xa032;
+
+		optional hoosho.j.feeds.CheckListenReq j_feeds_check_listen_req = 0xa041;
+		optional hoosho.j.feeds.CheckListenRes j_feeds_check_listen_res = 0xa042;
+		optional hoosho.j.feeds.GetCommentFollowReq j_feeds_get_comment_follow_req = 0xa043;
+		optional hoosho.j.feeds.GetCommentFollowRes j_feeds_get_comment_follow_res = 0xa044;
+
+		optional hoosho.j.feeds.SetOutTradeNoReq j_feeds_set_out_trade_no_req = 0xa051;
+		optional hoosho.j.feeds.SetOutTradeNoRes j_feeds_set_out_trade_no_res = 0xa052;
+		optional hoosho.j.feeds.CheckBusinessIdValidReq j_feeds_check_business_id_valid_req = 0xa053;
+		optional hoosho.j.feeds.CheckBusinessIdValidRes j_feeds_check_business_id_valid_res = 0xa054;
+
+	
+		//pay
+		optional hoosho.j.pay.UnifiedOrderReq unifiedorder_req = 0xb001;
+		optional hoosho.j.pay.UnifiedOrderRes unifiedorder_res = 0xb002;		
+		optional hoosho.j.pay.TransferReq transfer_req = 0xb003;
+		optional hoosho.j.pay.TransferRes transfer_res = 0xb004;		
+		optional hoosho.j.pay.GetUserCashReq get_user_cash_req = 0xb005;
+		optional hoosho.j.pay.GetUserCashRes get_user_cash_res = 0xb006;
+		optional hoosho.j.pay.QueryCashFlowReq query_cash_flow_req = 0xb007;
+		optional hoosho.j.pay.QueryCashFlowRes query_cash_flow_res = 0xb008;
+		optional hoosho.j.pay.UnifiedOrderCallbackReq unifiedorder_callback_req = 0xb009;
+		optional hoosho.j.pay.UnifiedOrderCallbackRes unifiedorder_callback_res = 0xb00a;
+		optional hoosho.j.pay.UnifiedOrderQueryReq query_unifiedorder_req = 0xb00b;
+		optional hoosho.j.pay.UnifiedOrderQueryRes query_unifiedorder_res = 0xb00c;
+		optional hoosho.j.pay.ListenIncomeReq listen_income_req = 0xb00d;
+		optional hoosho.j.pay.ListenIncomeRes listen_income_res = 0xb00e;
+		optional hoosho.j.pay.SendRedPackReq send_redpack_req = 0xb00f;
+		optional hoosho.j.pay.SendRedPackRes send_redpack_res = 0xb010;
+		optional hoosho.j.pay.QueryOutcomeReq query_outcome_req = 0xb011;
+		optional hoosho.j.pay.QueryOutcomeRes query_outcome_res = 0xb012;
+		optional hoosho.j.pay.CommitOutcomeReq commit_outcome_req = 0xb013;
+		optional hoosho.j.pay.CommitOutcomeRes commit_outcome_res = 0xb014;
+		optional hoosho.j.pay.CheckOutcomeReq check_outcome_req = 0xb015;
+		optional hoosho.j.pay.CheckOutcomeRes check_outcome_res = 0xb016;
+		optional hoosho.j.pay.UpdateOutcomeReq update_outcome_req = 0xb017;
+		optional hoosho.j.pay.UpdateOutcomeRes update_outcome_res = 0xb018;
+		
+		//user
+		optional hoosho.j.user.UserLoginReq user_login_req = 0xc001;
+		optional hoosho.j.user.UserLoginRes user_login_res = 0xc002;
+		optional hoosho.j.user.CheckLoginReq check_login_req = 0xc003;
+		optional hoosho.j.user.CheckLoginRes check_login_res = 0xc004;
+		optional hoosho.j.user.GetUserInfoReq get_user_info_req = 0xc005;
+		optional hoosho.j.user.GetUserInfoRes get_user_info_res = 0xc006;		
+		optional hoosho.j.user.UpdateUserInfoReq update_user_info_req = 0xc007;
+		optional hoosho.j.user.UpdateUserInfoRes update_user_info_res = 0xc008;		
+		optional hoosho.j.user.GetPAJSAPISignReq get_pa_jsapi_sign_req = 0xc009;
+		optional hoosho.j.user.GetPAJSAPISignRes get_pa_jsapi_sign_res = 0xc00a;
+		
+		//transcode
+		optional hoosho.j.transcode.TranscodeReq transcode_req = 0xd001;
+		optional hoosho.j.transcode.TranscodeRes transcode_res = 0xd002;
+
+
+		// Z-project
+		optional hoosho.msg.z.MsgReq z_msg_req = 0xe001;
+		optional hoosho.msg.z.MsgRes z_msg_res = 0xe002;
+
+		// S-project
+		optional hoosho.msg.s.MsgReq s_msg_req = 0xe003;
+		optional hoosho.msg.s.MsgRes s_msg_res = 0xe004;
+}

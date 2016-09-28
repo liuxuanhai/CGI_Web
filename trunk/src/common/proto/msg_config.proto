@@ -1,0 +1,13 @@
+
+package hoosho.config;
+
+
+message HooshoNOApplyReq
+{
+}
+message HooshoNOApplyRes
+{
+	optional uint64 hoosho_no = 1;
+}
+
+
